@@ -1,0 +1,72 @@
+{% extends "::base.html.twig" %}
+
+
+{% block title %}
+   {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <div class="site-branding-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="logo">
+                        <h1><a href="{{ path('vms_accueil') }}">Coutow<span>Factory</span></a></h1>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="shopping-item">
+                        <!--
+
+                        <?php
+                    //Si le paramètre del est passé par l'url on fais appel a la methode del qui supprime le produit de la variable session panier
+                    //le code de cette condition a été placé ici afin qu'il soit réalisé avant le count($_SESSION['panier']) ci dessous
+                    //pour que la bulle du nombre de produit soit a jours directement après la suppresion
+                    if(isset($_GET['del']))
+                    {
+                        $panier->del($_GET['del']);
+                        }
+                        ?>
+
+                        -->
+
+                        <a href="./panier.php">Panier - <span class="cart-amunt"><span id="total">
+                                    <!--<?= $panier->totalpanier(); ?>-->
+                                </span> €</span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><span id="count">
+                                    <!--<?= $panier->count($_SESSION['panier']); ?>-->
+                                </span></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="mainmenu-area">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class=""><a href="{{ path('vms_accueil') }}">Accueil</a></li>
+                        <li class=""><a href="{{ path('vms_vitrine', {'id': 1}) }}">Produits</a></li>
+                        <li class=""><a href="">Produit seul</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% block vms_vitrinebody %}
+
+    {% endblock %}
+{% endblock %}
+
+

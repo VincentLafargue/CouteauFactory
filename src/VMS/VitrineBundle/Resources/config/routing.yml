@@ -1,0 +1,92 @@
+vms_accueil:
+    path:    /
+    defaults:
+        _controller:    VMSVitrineBundle:Home:index
+
+
+
+
+
+
+
+
+vms_vitrine:
+    path: /{page}
+    defaults:
+        _controller:    VMSVitrineBundle:Vitrine:index
+        page:    1
+    requirements:
+       page:    \d*
+
+vms_vitrine_vue:
+    path:    /product/{id}
+    defaults:
+        _controller:    VMSVitrineBundle:Vitrine:vue
+    requirements:
+        id:    \d+
+
+vms_vitrine_ajouter:
+    path:   /ajouter
+    defaults:
+        _controller:    VMSVitrineBundle:Vitrine:ajouter
+
+vms_vitrine_editer:
+    path:    /editer/{id}
+    defaults:
+         _controller:    VMSVitrineBundle:Vitrine:editer
+    requirements:
+        id:     \d+
+
+vms_vitrine_supprimer:
+    path:    /supprimer/{id}
+    defaults:
+        _controller: VMSVitrineBundle:Vitrine:supprimer
+    requirements:
+        id:    \d+
+
+vms_vitrine_panier:
+    path:    /panier
+    defaults:
+        _controller:    VMSVitrineBundle:Vitrine:panier
+
+
+
+
+
+
+
+
+vms_vitrine_connexion:
+    path:    /connexion
+    defaults:
+        _controller:    VMSVitrineBundle:Vitrine:connexion
+
+vms_vitrine_inscription:
+    path:    /inscription
+    defaults:
+        _controller:    VMSVitrineBundle:Vitrine:inscription
+
+
+
+vms_vitrine_compte:
+    path:    /compte
+    defaults:
+        _controller:    VMSVitrineBundle:Compte:compte
+
+vms_vitrine_historique:
+    path:    /historique_achat/{page}
+    defaults:
+        _controller:    VMSVitrineBundle:Compte:historique
+    requirements:
+        page:    \d*
+
+vms_vitrine_listeshouait:
+    path: /liste_de_shouait/{page}
+    defaults:
+        _controller:   VMSVitrineBundle:Compte:listeShouait
+    requirements:
+        page:    \d*
+
+
+
+
