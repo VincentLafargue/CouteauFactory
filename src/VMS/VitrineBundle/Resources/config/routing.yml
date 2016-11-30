@@ -11,7 +11,7 @@ vms_accueil:
 
 
 vms_vitrine:
-    path: /{page}
+    path: /vitrine/{page}
     defaults:
         _controller:    VMSVitrineBundle:Vitrine:index
         page:    1

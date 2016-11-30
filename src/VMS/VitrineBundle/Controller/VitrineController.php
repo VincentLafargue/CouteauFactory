@@ -9,11 +9,18 @@
 namespace VMS\VitrineBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use VMS\VitrineBundle\VMSVitrineBundle;
 
 class  VitrineController extends Controller
 {
     public function indexAction($page)
     {
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('VMSVitrineBundle:Produit')
+        ;
+
         return $this->render('VMSVitrineBundle:Default:vitrine.html.twig');
     }
 
