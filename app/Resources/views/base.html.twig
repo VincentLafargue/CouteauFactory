@@ -61,7 +61,8 @@
 
         {% endblock %}
 
-        <!-- footer 1 -->
+
+        {% block footer1 %}
         <div class="row">
             <div class="footer-top-area">
                 <div class="zigzag-bottom"></div>
@@ -70,7 +71,7 @@
                         <div class="col-md-3 col-sm-6">
                             <div class="footer-about-us">
                                 <h2>Coutow<span>Factory</span></h2>
-                                <p>Armurier depuis plus de 40 ansSitué à Schirmeck dans le Bas-Rhin, nous exerçons notre métier d'armurier avec passion depuis plus de 40 ans.Notre expérience nous permet de vous conseiller et vous guider dans vos choix.</p>
+                                <p>Situé à Schirmeck dans le Bas-Rhin, nous exerçons notre métier d'armurier avec passion depuis plus de 40 ans. Notre expérience nous permet de vous conseiller et vous guider dans vos choix.</p>
                                 <div class="footer-social">
                                     <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
                                     <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
@@ -88,7 +89,7 @@
                                     <li><a href="#">Mon compte</a></li>
                                     <li><a href="#">Historique d'achat</a></li>
                                     <li><a href="#">Liste de souhait</a></li>
-                                    <li><a href="#">Contacter le vendeur</a></li>
+                                    <li><a href="#">Contacter les vendeurs</a></li>
                                     <li><a href="#">Page principale</a></li>
                                 </ul>
                             </div>
@@ -122,10 +123,9 @@
                 </div>
             </div>
         </div>
+        {% endblock %}
 
-
-        <!-- footer 2 -->
-
+        {% block footer2 %}
         <div class="row">
             <div class="footer-bottom-area">
                 <div class="container">
@@ -148,6 +148,7 @@
                 </div>
             </div>
         </div>
+        {% endblock %}
 
         {% block javascripts %}
 

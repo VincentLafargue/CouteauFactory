@@ -36,7 +36,7 @@ class  VitrineController extends Controller
         $categorieProduit = $produit->getCategorie();
 
         $listProduitAll = $repository->findByDateLimit(4);
-        $listProduitSameCategorie = $repository->findByCategoryLimit($categorieProduit, 3, $id);
+        $listProduitSameCategorie = $repository->findByCategoryLimit($categorieProduit, 99, $id);
         
 
         return $this->render('VMSVitrineBundle:Default:product.html.twig', array(
