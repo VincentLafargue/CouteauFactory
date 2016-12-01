@@ -21,7 +21,12 @@ class  VitrineController extends Controller
             ->getRepository('VMSVitrineBundle:Produit')
         ;
 
-        return $this->render('VMSVitrineBundle:Default:vitrine.html.twig');
+        $listProduits = $repository->findAll();
+
+        return $this->render('VMSVitrineBundle:Default:vitrine.html.twig',
+            array(
+                'listProduits' => $listProduits
+            ));
     }
 
     public function vueAction($id)
