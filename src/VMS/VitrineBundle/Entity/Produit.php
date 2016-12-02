@@ -28,12 +28,6 @@ class Produit
      */
     private $image_path;
 
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="is_accessoire", type="boolean", nullable=true)
-     */
-    private $isAccessoire;
 
     /**
      * @var int
@@ -114,30 +108,6 @@ class Produit
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set isAccessoire
-     *
-     * @param boolean $isAccessoire
-     *
-     * @return Produit
-     */
-    public function setIsAccessoire($isAccessoire)
-    {
-        $this->isAccessoire = $isAccessoire;
-
-        return $this;
-    }
-
-    /**
-     * Get isAccessoire
-     *
-     * @return bool
-     */
-    public function getIsAccessoire()
-    {
-        return $this->isAccessoire;
     }
 
     /**

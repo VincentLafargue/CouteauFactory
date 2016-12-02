@@ -21,7 +21,12 @@ class  VitrineController extends Controller
             ->getRepository('VMSVitrineBundle:Produit')
         ;
 
-        return $this->render('VMSVitrineBundle:Default:vitrine.html.twig');
+        $listProduits = $repository->findAll();
+
+        return $this->render('VMSVitrineBundle:Default:vitrine.html.twig',
+            array(
+                'listProduits' => $listProduits
+            ));
     }
 
     public function vueAction($id)
@@ -36,7 +41,7 @@ class  VitrineController extends Controller
         $categorieProduit = $produit->getCategorie();
 
         $listProduitAll = $repository->findByDateLimit(4);
-        $listProduitSameCategorie = $repository->findByCategoryLimit($categorieProduit, 3, $id);
+        $listProduitSameCategorie = $repository->findByCategoryLimit($categorieProduit, 99, $id);
         
 
         return $this->render('VMSVitrineBundle:Default:product.html.twig', array(

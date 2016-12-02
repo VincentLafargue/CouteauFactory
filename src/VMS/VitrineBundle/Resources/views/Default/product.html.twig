@@ -43,7 +43,7 @@
 
                     <div class="product-breadcroumb">
                         <a href="{{ path('vms_accueil') }}">Accueil</a>
-                        <a href="">Catégories</a>
+                        <a href="">{{ produit.getCategorie() }}</a>
                         <a href="">{{ produit.getLibelleProduit() }}</a>
                     </div>
 
@@ -72,7 +72,7 @@
                                 </form>
 
                                 <div class="product-inner-category">
-                                    <p>Categorie: <a href="">Couteaux Papillons</a>
+                                    <p>Categorie: <a href="">{{ produit.getCategorie() }}</a>
                                 </div>
 
                                 <div role="tabpanel">
@@ -134,7 +134,7 @@
                                     <img src="{{ asset('img/produits/' ~ produit.getImagePath()) }}" alt="" style="height: 160px">
                                     <div class="product-hover">
                                         <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Ajouter panier</a>
-                                        <a href="" class="view-details-link"><i class="fa fa-link"></i> Détails</a>
+                                        <a href="{{ path('vms_vitrine_vue', {id: produit.getId() }) }}" class="view-details-link"><i class="fa fa-link"></i> Détails</a>
                                     </div>
                                 </div>
                                 <h2><a href="{{ path('vms_vitrine_vue', {id: produit.getId() }) }}">{{ produit.getLibelleProduit }}</a></h2>
