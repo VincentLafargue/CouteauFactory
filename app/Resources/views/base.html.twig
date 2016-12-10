@@ -61,13 +61,20 @@
                     <div class="col-md-4">
                         <div class="header-right">
                             <ul class="list-unstyled list-inline">
-                                <li>
+
                                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                <li>
                                         <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
-                                    {% else %}
-                                        <a href="{{ path('fos_user_security_login') }}"><i class="fa fa-user"></i> {{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-                                    {% endif %}
                                 </li>
+                                    {% else %}
+                                        <li>
+                                            <a href="{{ path('fos_user_registration_register') }}"><i class="fa fa-user"></i> {{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('fos_user_security_login') }}"><i class="fa fa-user"></i> {{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                                        </li>
+                                    {% endif %}
+
                             </ul>
                         </div>
                     </div>
