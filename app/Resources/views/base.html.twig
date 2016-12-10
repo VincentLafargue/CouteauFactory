@@ -39,51 +39,110 @@
 
     <body>
 
-        <!-- header -->
-        <div class="container">
-            <div class="header-area">
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="user-menu">
-                            <ul>
-                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                    <li><a href="#"><i class="fa fa-user"></i> Mon Compte ({{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }})</a></li>
-                                    <li><a href="#"><i class="fa fa-heart"></i> Liste de souhait</a></li>
-                                    <li><a href=""><i class="fa fa-user"></i> Mon panier</a></li>
-                                    <li><a href=""><i class="fa fa-user"></i> Payer</a></li>
-                                {% else %}
+        {% block header %}
 
-                                {% endif %}
-                            </ul>
+            {% block ConnectionInscription %}
+                <div class="header-area">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="user-menu">
+                                    <ul>
+                                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                            <li><a href="#"><i class="fa fa-user"></i> Mon Compte ({{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }})</a></li>
+                                            <li><a href="#"><i class="fa fa-heart"></i> Liste de souhait</a></li>
+                                            <li><a href=""><i class="fa fa-user"></i> Mon panier</a></li>
+                                            <li><a href=""><i class="fa fa-user"></i> Payer</a></li>
+                                        {% else %}
+
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="header-right">
+                                    <ul class="list-unstyled list-inline">
+
+                                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                                <li>
+                                                        <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+                                                </li>
+                                            {% else %}
+                                                <li>
+                                                    <a href="{{ path('fos_user_registration_register') }}"><i class="fa fa-user"></i> {{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ path('fos_user_security_login') }}"><i class="fa fa-user"></i> {{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                                                </li>
+                                            {% endif %}
+
+                                    </ul>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-
-                    <div class="col-md-4">
-                        <div class="header-right">
-                            <ul class="list-unstyled list-inline">
-
-                                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                <li>
-                                        <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
-                                </li>
-                                    {% else %}
-                                        <li>
-                                            <a href="{{ path('fos_user_registration_register') }}"><i class="fa fa-user"></i> {{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ path('fos_user_security_login') }}"><i class="fa fa-user"></i> {{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-                                        </li>
-                                    {% endif %}
-
-                            </ul>
-                        </div>
-                    </div>
-
                 </div>
-            </div>
-        </div>
 
-        {% block body %}{% endblock %}
+            {% endblock %}
+
+            {% block LogoEtPanier %}
+                <div class="site-branding-area">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="logo">
+                                    <h1><a href="{{ path('vms_accueil') }}">Coutow<span>Factory</span></a></h1>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="shopping-item">
+
+                                    <a href="">Panier - <span class="cart-amunt"><span id="total">
+                                            <!--<?= $panier->totalpanier(); ?>-->
+                                        </span> €</span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><span id="count">
+                                            <!--<?= $panier->count($_SESSION['panier']); ?>-->
+                                        </span></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+
+            {% block Menu %}
+                <div class="mainmenu-area">
+                    <div class="container">
+                        <div class="row">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <div class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav">
+                                    <li class=""><a href="{{ path('vms_accueil') }}">Accueil</a></li>
+                                    <li class=""><a href="{{ path('vms_vitrine', {'id': 1}) }}">Produits</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="height: 1px;background-color: black;"></div>
+
+            {% endblock %}
+
+        {% endblock %}
+
+
+        {% block body %}
+
+        {% endblock %}
 
 
         {% block footer1 %}

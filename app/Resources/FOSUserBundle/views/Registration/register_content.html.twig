@@ -1,8 +1,29 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+
+<div class="row" style="margin-top: 20px;margin-bottom: 20px;">
+    <div class="col-md-6 col-md-offset-3">
+
+        {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+                    <label for="email">Adresse e-mail</label>
+                    {{ form_widget(form.email, {'attr': {'class': 'form-control', 'id': 'email', 'placeholder': 'Ex: vincent@gmail.com', 'required': 'required'}}) }}
+
+                    <label for="username">Nom d'utilisateur</label>
+                    {{ form_widget(form.username, {'attr': {'class': 'form-control', 'id': 'username', 'placeholder': 'Ex: vincent66', 'required': 'required'}}) }}
+
+                    <label for="password">Mot de passe</label>
+                    {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control', 'id': 'password', 'required': 'required'}}) }}
+
+                    <label for="password_repeat">Répéter le mot de passe</label>
+                    {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control', 'id': 'password_repeat', 'required': 'required'}}) }}
+
+                    <div style="margin-top: 5px;">
+                        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+                    </div>
+
+        {{ form_end(form) }}
+
+        <p style="margin-top: 20px">Note: Si après avoir appuyer sur "Créer un compte" vous n'êtes pas connecté et vous n'arrivez pas a vous connecter alors le nom du d'utilisateur choisis est surement déjà utilisé, il faut en choisir un autre.</p>
     </div>
-{{ form_end(form) }}
+</div>
