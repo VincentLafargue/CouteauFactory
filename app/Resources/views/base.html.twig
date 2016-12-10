@@ -40,26 +40,43 @@
     <body>
 
         <!-- header -->
-        <div class="header-area">
-            <div class="container">
+        <div class="container">
+            <div class="header-area">
                 <div class="row">
                     <div class="col-md-8">
+                        <div class="user-menu">
+                            <ul>
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                    <li><a href="#"><i class="fa fa-user"></i> Mon Compte ({{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }})</a></li>
+                                    <li><a href="#"><i class="fa fa-heart"></i> Liste de souhait</a></li>
+                                    <li><a href=""><i class="fa fa-user"></i> Mon panier</a></li>
+                                    <li><a href=""><i class="fa fa-user"></i> Payer</a></li>
+                                {% else %}
+
+                                {% endif %}
+                            </ul>
+                        </div>
                     </div>
 
                     <div class="col-md-4">
                         <div class="header-right">
                             <ul class="list-unstyled list-inline">
-                                <li><a href=""><i class="fa fa-user"></i> Connexion</a></li>
+                                <li>
+                                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                        <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+                                    {% else %}
+                                        <a href="{{ path('fos_user_security_login') }}"><i class="fa fa-user"></i> {{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                                    {% endif %}
+                                </li>
                             </ul>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
 
-        {% block body %}
-
-        {% endblock %}
+        {% block body %}{% endblock %}
 
 
         {% block footer1 %}
