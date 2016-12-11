@@ -8,7 +8,6 @@
 namespace VMS\VitrineBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use VMS\VitrineBundle\VMSVitrineBundle;
 
 class HomeController extends Controller
 {

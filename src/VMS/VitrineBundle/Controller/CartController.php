@@ -5,3 +5,86 @@
  * Date: 11/12/2016
  * Time: 01:39
  */
+
+namespace VMS\VitrineBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+class CartController extends Controller
+{
+    public function addAction(Request $request, $id)
+    {
+        $session = $request->getSession();
+
+        if (!$session->has('cart')) 
+        {
+            $session->set('cart', array());
+        }
+
+        $cart = $session->get('cart');
+
+        //$cart[ID PRODUCT] => QUANTITY
+
+        //le produit est déjà dans le panier
+        if (array_key_exists($id, $cart))
+        {
+            if ($request->query->get('quantity') != null)
+            {
+                //on remplace la valeur par celle choisis sur la page du produit
+                $cart[$id] = $request->query->get('quantity');
+            }
+        }
+        else //le produit n'est pas déja dans la panier
+        {
+            if ($request->query->get('quantity') != null)
+            {
+                //on lui met la valeur choisis sur la page du produit
+                $cart[$id] = $request->query->get('quantity');
+            }
+            else
+                //sinon c'est sur une des autres page donc on en met 1 dans le panier
+                $cart[$id] = 1;
+        }
+
+        $session->set('cart', $cart);
+
+        return $this->redirect($this->generateUrl('vms_cart'));
+    }
+
+    public function cartAction(Request $request)
+    {
+        $session = $request->getSession();
+
+        if (!$session->has('cart'))
+        {
+            $session->set('cart', array());
+        }
+        //dump($session->get('cart'));
+        //die();
+
+        $em = $this->getDoctrine()->getManager();
+        $products = $em->getRepository('VMSVitrineBundle:Produit')->findArray(array_keys($session->get('cart')));
+
+        return $this->render('VMSVitrineBundle:Default:cart.html.twig', array(
+            'products' => $products,
+            'cart' => $session->get('cart')
+        ));
+    }
+
+    public function removeAction(Request $request, $id)
+    {
+        $session = $request->getSession();
+        $cart = $session->get('cart');
+
+        if (array_key_exists($id, $cart))
+        {
+            unset($cart[$id]);
+            $session->set('cart',$cart);
+        }
+
+        return $this->redirect($this->generateUrl('vms_cart'));
+    }
+}

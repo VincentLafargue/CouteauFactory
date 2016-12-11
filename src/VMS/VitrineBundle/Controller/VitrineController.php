@@ -66,13 +66,11 @@ class  VitrineController extends Controller
 
     }
 
-    public function panierAction()
+    
+    public function connexionAction()
     {
-
-    }public function connexionAction()
-{
-
-}
+    
+    }
 
     public function inscriptionAction()
     {

@@ -1,0 +1,121 @@
+{% extends "VMSVitrineBundle::layout.html.twig" %}
+
+{% block vms_vitrinebody %}
+
+<div class="product-big-title-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>Votre Pannier</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" style="margin-top: 25px;">
+    <div class="col-md-8 col-md-offset-2">
+    {% if products is empty %}
+        <h1 style="text-align:center;margin-top:50px;margin-bottom: 50px;">Votre panier est vide</h1>
+    {% else %}
+        <div class="product-content-right">
+            <div class="woocommerce">
+                <form method="post" action="">
+                    <table cellspacing="0" class="shop_table cart">
+                        <thead>
+                        <tr>
+                            <th class="product-remove">&nbsp;</th>
+                            <th class="product-thumbnail">&nbsp;</th>
+                            <th class="product-name">Produit</th>
+                            <th class="product-price">Prix</th>
+                            <th class="product-quantity">Quantite</th>
+                            <th class="product-subtotal">Total</th>
+                        </tr>
+                        </thead>
+
+
+                        <tbody>
+                        <!-- Debut des produits -->
+                        {% for product in products %}
+
+                        <tr class="cart_item">
+                            <td class="product-remove">
+                                <a title="Supprimer ce produit" class="remove" href="{{ path('vms_cart_remove', {'id': product.getId() }) }}">×</a>
+                            </td>
+
+                            <td class="product-thumbnail">
+                                <a href="{{ path('vms_vitrine_vue', {'id': product.getId()}) }}"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="{{ asset('img/produits/' ~ product.getImagePath()) }}"></a>
+                            </td>
+
+                            <td class="product-name">
+                                <a href="{{ path('vms_vitrine_vue', {'id': product.getId()}) }}">{{ product.getLibelleProduit }}</a>
+                            </td>
+
+                            <td class="product-price">
+                                <span class="amount">{{ product.getPrix() }}.00€</span>
+                            </td>
+
+                            <form action="{{ path('vms_cart_add', {'id': product.getId()}) }}" method="get" >
+                                <td class="product-quantity">
+                                    <div class="quantity buttons_added">
+                                        <input type="text" size="5"  max="{{ product.getStock() }}" class="input-text qty text" title="Qty" value="{{ cart[product.getId()] }}" name="quantity">
+                                    </div>
+                                    <input type="submit" value="Mettre a jour le pannier" name="update_cart" class="button">
+                            </form>
+                                </td>
+
+                            <td class="product-subtotal">
+                                <span class="amount">{{ product.getPrix() * cart[product.getId()] }}.00€</span>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        <!-- Fin des produits -->
+
+                        <tr>
+                            <td class="actions" colspan="6">
+                                <div class="coupon">
+                                    <label for="coupon_code">Coupon:</label>
+                                    <input type="text" placeholder="A implementer..." value="" id="coupon_code" class="input-text" name="coupon_code">
+                                    {#<input type="submit" value="Appliquer" name="apply_coupon" class="button">#}
+                                </div>
+                                <input type="submit" value="Passer au paiement" name="proceed" class="checkout-button button alt wc-forward">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+
+                <div class="cart-collaterals">
+                    <div class="cart_totals">
+                        <h2>Total du pannier</h2>
+
+                        <table cellspacing="0">
+                            <tbody>
+                            <tr class="cart-subtotal">
+                                <th>Total HT</th>
+                                <td><span class="amount"><?= $class_produit->numberformat($panier->totalpanier())?> €</span></td>
+                            </tr>
+
+                            <tr class="shipping">
+                                <th>Livraison</th>
+                                <td>Gratuite</td>
+                            </tr>
+
+                            <tr class="order-total">
+                                <th>Total a payer</th>
+                                <td><strong><span class="amount"><?= $class_produit->numberformat($panier->totalpanier() + $panier->livraison(0))?> €</span></strong> </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <?php
+				}
+				?>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+</div>
+
+{% endblock %}

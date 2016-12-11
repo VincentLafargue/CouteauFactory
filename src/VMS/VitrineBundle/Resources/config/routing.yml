@@ -46,18 +46,18 @@ vms_vitrine_supprimer:
 
 
 
-vms_vitrine_panier:
-    path:    /panier
+vms_cart:
+    path:    /cart
     defaults:
-        _controller:    VMSVitrineBundle:Vitrine:panier
+        _controller:    VMSVitrineBundle:Cart:cart
 
 vms_cart_add:
-    path:    /panier/ajouter/{id}
+    path:    /cart/add/{id}
     defaults:
         _controller:    VMSVitrineBundle:Cart:add
 
 vms_cart_remove:
-    path:    /supprimer/{id}
+    path:    /cart/remove/{id}
     defaults:
         _controller:    VMSVitrineBundle:Cart:remove
 

@@ -32,4 +32,15 @@ class ProduitRepository extends \Doctrine\ORM\EntityRepository
 
         return $qb->getQuery()->getResult();
     }
+    
+    public function findArray($array)
+    {
+        $dql = $this->createQueryBuilder('p');
+
+        $dql
+            ->where('p.id IN (:array)')
+            ->setParameter('array', $array)
+        ;
+        return $dql->getQuery()->getResult();
+    }
 }
