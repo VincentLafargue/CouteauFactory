@@ -56,6 +56,11 @@ vms_cart_add:
     defaults:
         _controller:    VMSVitrineBundle:Cart:add
 
+vms_cart_change:
+    path:    /cart/change/{id}
+    defaults:
+        _controller:    VMSVitrineBundle:Cart:change
+
 vms_cart_remove:
     path:    /cart/remove/{id}
     defaults:

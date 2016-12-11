@@ -22,8 +22,23 @@
 <div class="row" style="margin-top: 25px;">
     <div class="col-md-8 col-md-offset-2">
     {% if products is empty %}
+
+        {% for message in app.session.flashbag.get('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
         <h1 style="text-align:center;margin-top:50px;margin-bottom: 50px;">Votre panier est vide</h1>
     {% else %}
+
+        {% for message in app.session.flashbag.get('success') %}
+
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+
+        {% endfor %}
         <div class="product-content-right">
             <div class="woocommerce">
                 <form method="post" action="{{ path('vms_cart_checkout') }}">
@@ -63,9 +78,9 @@
 
 
                                 <td class="product-quantity">{#On a deux formulaires identiques sinon ça ne marche pas / on sais pas pourquoi#}
-                                    <form action="{{ path('vms_cart_add', {'id': product.getId()}) }}" class="cart" method="get">
+                                    <form action="{{ path('vms_cart_change', {'id': product.getId()}) }}" class="cart" method="get">
                                     </form>
-                                    <form action="{{ path('vms_cart_add', {'id': product.getId()}) }}" class="cart" method="get">
+                                    <form action="{{ path('vms_cart_change', {'id': product.getId()}) }}" class="cart" method="get">
                                         <div class="quantity">
                                             <input type="number" size="4" class="input-text qty text" title="Qty" value="{{ cart[product.getId()] }}" name="quantity" min="1" max="{{ product.getStock() }}" step="1">
                                         </div>

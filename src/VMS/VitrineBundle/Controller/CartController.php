@@ -27,7 +27,7 @@ class CartController extends Controller
 
         //$cart[ID PRODUCT] => QUANTITY
 
-        //le produit est déjà dans le panier
+        // si le produit est déjà dans le panier
         if (array_key_exists($id, $cart))
         {
             if ($request->query->get('quantity') != null)
@@ -49,6 +49,35 @@ class CartController extends Controller
         }
 
         $session->set('cart', $cart);
+        $this->get('session')->getFlashBag()->add('success', 'Article ajouté avec succès');
+
+        return $this->redirect($this->generateUrl('vms_cart'));
+    }
+
+    public function changeAction(Request $request, $id)
+    {
+        $session = $request->getSession();
+
+        if (!$session->has('cart'))
+        {
+            $session->set('cart', array());
+        }
+        $cart = $session->get('cart');
+        //$cart[ID PRODUCT] => QUANTITY
+
+        //le produit est déjà dans le panier
+        if (array_key_exists($id, $cart))
+        {
+            if ($request->query->get('quantity') != null)
+            {
+                //on remplace la valeur par celle choisis sur la page du produit
+                $cart[$id] = $request->query->get('quantity');
+            }
+        }
+
+
+        $session->set('cart', $cart);
+        $this->get('session')->getFlashBag()->add('success', 'Quantitée modifiée avec succès');
 
         return $this->redirect($this->generateUrl('vms_cart'));
     }
@@ -82,6 +111,7 @@ class CartController extends Controller
         {
             unset($cart[$id]);
             $session->set('cart',$cart);
+            $this->get('session')->getFlashBag()->add('success', 'Article supprimé avec succès');
         }
 
         return $this->redirect($this->generateUrl('vms_cart'));
