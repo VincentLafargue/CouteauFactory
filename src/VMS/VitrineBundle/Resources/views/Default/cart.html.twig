@@ -2,6 +2,10 @@
 
 {% set totalHT = 0 %}
 
+{% block title %}
+    Panier - {{ parent() }}
+{% endblock %}
+
 {% block vms_vitrinebody %}
 
 <div class="product-big-title-area">
@@ -22,7 +26,7 @@
     {% else %}
         <div class="product-content-right">
             <div class="woocommerce">
-                <form method="post" action="">
+                <form method="post" action="{{ path('vms_cart_checkout') }}">
                     <table cellspacing="0" class="shop_table cart">
                         <thead>
                         <tr>
@@ -86,7 +90,7 @@
                                     <input type="text" placeholder="A implementer..." value="" id="coupon_code" class="input-text" name="coupon_code">
                                     <input type="submit" value="Appliquer" name="apply_coupon" class="button">
                                 </div>
-                                <button onclick="window.location.href='{{  path('vms_cart_payment') }}'" style="float: right;" type="submit" name="proceed" class="checkout-button button alt wc-forward" href="">Passer au paiement</button>
+                                <input style="float: right;" type="submit" name="proceed" value="Passer au paiement" class="checkout-button button alt wc-forward" href="">
                             </td>
                         </tr>
                         </tbody>

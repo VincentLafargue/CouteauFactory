@@ -11,7 +11,6 @@ namespace VMS\VitrineBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class CartController extends Controller
 {
@@ -88,10 +87,17 @@ class CartController extends Controller
         return $this->redirect($this->generateUrl('vms_cart'));
     }
 
-    public function paymentAction()
-    {        
-        return $this->render('VMSVitrineBundle:Default:payment.html.twig', array(
-            
-        ));
+    public function checkoutAction()
+    {
+        if ($this->isGranted('ROLE_USER'))
+        {
+            return $this->render('VMSVitrineBundle:Default:checkout.html.twig', array(
+            ));
+        }
+        else{
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
+
     }
 }
