@@ -1,5 +1,7 @@
 {% extends "VMSVitrineBundle::layout.html.twig" %}
 
+{% set totalHT = 0 %}
+
 {% block vms_vitrinebody %}
 
 <div class="product-big-title-area">
@@ -55,19 +57,25 @@
                                 <span class="amount">{{ product.getPrix() }}.00€</span>
                             </td>
 
-                            <form action="{{ path('vms_cart_add', {'id': product.getId()}) }}" method="get" >
-                                <td class="product-quantity">
-                                    <div class="quantity buttons_added">
-                                        <input type="text" size="5"  max="{{ product.getStock() }}" class="input-text qty text" title="Qty" value="{{ cart[product.getId()] }}" name="quantity">
-                                    </div>
-                                    <input type="submit" value="Mettre a jour le pannier" name="update_cart" class="button">
-                            </form>
+
+                                <td class="product-quantity">{#On a deux formulaires identiques sinon ça ne marche pas / on sais pas pourquoi#}
+                                    <form action="{{ path('vms_cart_add', {'id': product.getId()}) }}" class="cart" method="get">
+                                    </form>
+                                    <form action="{{ path('vms_cart_add', {'id': product.getId()}) }}" class="cart" method="get">
+                                        <div class="quantity">
+                                            <input type="number" size="4" class="input-text qty text" title="Qty" value="{{ cart[product.getId()] }}" name="quantity" min="1" max="{{ product.getStock() }}" step="1">
+                                        </div>
+                                        <button  class="add_to_cart_button" type="submit">Mettre a jour</button>
+                                    </form>
                                 </td>
 
                             <td class="product-subtotal">
                                 <span class="amount">{{ product.getPrix() * cart[product.getId()] }}.00€</span>
                             </td>
                         </tr>
+
+                        {% set totalHT = totalHT + (product.getPrix() * cart[product.getId()]) %}
+
                         {% endfor %}
                         <!-- Fin des produits -->
 
@@ -76,9 +84,9 @@
                                 <div class="coupon">
                                     <label for="coupon_code">Coupon:</label>
                                     <input type="text" placeholder="A implementer..." value="" id="coupon_code" class="input-text" name="coupon_code">
-                                    {#<input type="submit" value="Appliquer" name="apply_coupon" class="button">#}
+                                    <input type="submit" value="Appliquer" name="apply_coupon" class="button">
                                 </div>
-                                <input type="submit" value="Passer au paiement" name="proceed" class="checkout-button button alt wc-forward">
+                                <button onclick="window.location.href='{{  path('vms_cart_payment') }}'" style="float: right;" type="submit" name="proceed" class="checkout-button button alt wc-forward" href="">Passer au paiement</button>
                             </td>
                         </tr>
                         </tbody>
@@ -93,7 +101,7 @@
                             <tbody>
                             <tr class="cart-subtotal">
                                 <th>Total HT</th>
-                                <td><span class="amount"><?= $class_produit->numberformat($panier->totalpanier())?> €</span></td>
+                                <td><span class="amount">{{ totalHT }}.00€</span></td>
                             </tr>
 
                             <tr class="shipping">
@@ -101,9 +109,14 @@
                                 <td>Gratuite</td>
                             </tr>
 
+                            <tr class="TVA">
+                                <th>TVA 15%</th>
+                                <td>{{ totalHT * 1.15 - totalHT }}€</td>
+                            </tr>
+
                             <tr class="order-total">
                                 <th>Total a payer</th>
-                                <td><strong><span class="amount"><?= $class_produit->numberformat($panier->totalpanier() + $panier->livraison(0))?> €</span></strong> </td>
+                                <td><strong><span class="amount">{{ totalHT * 1.15 }}€</span></strong></td>
                             </tr>
                             </tbody>
                         </table>

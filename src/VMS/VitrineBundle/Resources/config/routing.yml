@@ -61,6 +61,11 @@ vms_cart_remove:
     defaults:
         _controller:    VMSVitrineBundle:Cart:remove
 
+vms_cart_payment:
+    path:    /payment
+    defaults:
+        _controller:    VMSVitrineBundle:Cart:payment
+
 
 
 

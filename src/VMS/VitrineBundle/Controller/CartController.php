@@ -87,4 +87,11 @@ class CartController extends Controller
 
         return $this->redirect($this->generateUrl('vms_cart'));
     }
+
+    public function paymentAction()
+    {        
+        return $this->render('VMSVitrineBundle:Default:payment.html.twig', array(
+            
+        ));
+    }
 }
