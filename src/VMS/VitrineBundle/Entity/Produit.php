@@ -127,7 +127,7 @@ class Produit
     /**
      * Get prix
      *
-     * @return string
+     * @return int
      */
     public function getPrix()
     {

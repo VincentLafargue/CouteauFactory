@@ -130,4 +130,39 @@ class CartController extends Controller
 
 
     }
+
+    public function infosAction(Request $request)
+    {
+        $session = $request->getSession();
+
+        if(!$session->has('cart'))
+        {
+            $session->set('cart', array());
+            $articles = 0;
+            $price = 0;
+        }
+        else
+        {
+            $articles = count($session->get('cart'));
+
+            $cart = $session->get('cart');
+
+            $em = $this->getDoctrine()->getManager();
+
+            $products = $em->getRepository('VMSVitrineBundle:Produit')->findArray(array_keys($session->get('cart')));
+
+            $price = 0;
+
+            foreach ($products as $product)
+            {
+                $price = $price + $product->getPrix() * $cart[$product->getId()] ;
+            }
+
+        }
+
+        return $this->render('VMSVitrineBundle:Default:cartInfos/cartInfos.html.twig', array(
+            'articles' => $articles,
+            'price' => $price
+        ));
+    }
 }

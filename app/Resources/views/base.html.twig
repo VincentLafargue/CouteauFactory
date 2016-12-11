@@ -99,12 +99,7 @@
 
                             <div class="col-sm-6">
                                 <div class="shopping-item">
-
-                                    <a href="{{ path('vms_cart') }}">Panier - <span class="cart-amunt"><span id="total">
-                                            <!--<?= $panier->totalpanier(); ?>-->
-                                        </span> €</span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><span id="count">
-                                            <!--<?= $panier->count($_SESSION['panier']); ?>-->
-                                        </span></span></a>
+                                    {{ render(controller('VMSVitrineBundle:Cart:infos')) }}
                                 </div>
                             </div>
                         </div>
