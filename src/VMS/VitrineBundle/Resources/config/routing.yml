@@ -44,27 +44,25 @@ vms_vitrine_supprimer:
     requirements:
         id:    \d+
 
+
+
 vms_vitrine_panier:
     path:    /panier
     defaults:
         _controller:    VMSVitrineBundle:Vitrine:panier
 
-
-
-
-
-
-
-
-vms_vitrine_connexion:
-    path:    /connexion
+vms_cart_add:
+    path:    /panier/ajouter/{id}
     defaults:
-        _controller:    VMSVitrineBundle:Vitrine:connexion
+        _controller:    VMSVitrineBundle:Cart:add
 
-vms_vitrine_inscription:
-    path:    /inscription
+vms_cart_remove:
+    path:    /supprimer/{id}
     defaults:
-        _controller:    VMSVitrineBundle:Vitrine:inscription
+        _controller:    VMSVitrineBundle:Cart:remove
+
+
+
 
 
 

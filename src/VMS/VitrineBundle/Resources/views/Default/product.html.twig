@@ -63,11 +63,11 @@
                                     <ins>{{ produit.getPrix() }}.00€</ins>
                                 </div>
 
-                                <form action="" class="cart">
+                                <form action="{{ path('vms_cart_add', {'id': produit.getId()}) }}" class="cart" method="get">
                                     <div class="quantity">
-                                        <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
+                                        <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" max="{{ produit.getstock() }}" step="1">
                                     </div>
-                                    <button class="add_to_cart_button" type="submit" href="">Ajouter au panier</button>
+                                    <button class="add_to_cart_button" type="submit" >Ajouter au panier</button>
                                     <p>En stock : {{ produit.getStock() }} exemplaires </p>
                                 </form>
 
