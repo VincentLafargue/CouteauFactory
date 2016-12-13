@@ -26,7 +26,7 @@
                         <a href="{{ path('vms_vitrine_vue', {'id' : produit.getId()}) }}"><img src="{{ asset('img/produits/' ~ produit.getImagePath()) }}" class="recent-thumb" alt=""></a>
                         <h2><a href="{{ path('vms_vitrine_vue', {'id' : produit.getId()}) }}">{{ produit.getLibelleProduit() }}</a></h2>
                         <div class="product-sidebar-price">
-                            <ins>$700.00</ins>
+                            <ins>{{ produit.getPrix() }}.00€</ins>
                         </div>
                     </div>
                     {% endfor %}
