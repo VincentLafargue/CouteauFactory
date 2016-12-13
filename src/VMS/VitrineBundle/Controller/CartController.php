@@ -117,6 +117,17 @@ class CartController extends Controller
         return $this->redirect($this->generateUrl('vms_cart'));
     }
 
+    public function addressAction(Request $request)
+    {
+        $session = $request->getSession();
+
+
+        return $this->render('VMSVitrineBundle:Default:address.html.twig', array(
+
+        ));
+    }
+
+
     public function checkoutAction()
     {
         if ($this->isGranted('ROLE_USER'))
