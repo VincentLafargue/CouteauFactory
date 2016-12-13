@@ -10,7 +10,7 @@ class LoadProduit implements FixtureInterface
     public function load(ObjectManager $manager)
     {
         $produit1 = new Produit();
-        $produit1 ->setPrix('378');
+        $produit1 ->setPrix('378.00');
         $produit1 ->setStock(15);
         $produit1 ->setLibelleProduit('Lame d\'Infini');
         $produit1 ->setDescriptionProduit('Cette lame émane une lueur jaune.');
@@ -24,7 +24,7 @@ class LoadProduit implements FixtureInterface
         $manager->persist($produit1);
 
         $produit2 = new Produit();
-        $produit2 ->setPrix('187');
+        $produit2 ->setPrix('187.00');
         $produit2 ->setStock(11);
         $produit2 ->setLibelleProduit('Cooked');
         $produit2 ->setDescriptionProduit('Couteau parfait pour la cuisine !');
@@ -38,7 +38,7 @@ class LoadProduit implements FixtureInterface
         $manager->persist($produit2);
 
         $produit3 = new Produit();
-        $produit3 ->setPrix('74');
+        $produit3 ->setPrix('74.00');
         $produit3 ->setStock(52);
         $produit3 ->setLibelleProduit('Rappeuse');
         $produit3 ->setDescriptionProduit('Ce couteau découppe extrêmement bien tout ce qu\'il touche.');
@@ -52,7 +52,7 @@ class LoadProduit implements FixtureInterface
         $manager->persist($produit3);
 
         $produit4 = new Produit();
-        $produit4 ->setPrix('130');
+        $produit4 ->setPrix('130.00');
         $produit4 ->setStock(7);
         $produit4 ->setLibelleProduit('Hachoir');
         $produit4 ->setDescriptionProduit('Parfait pour découper le poisson !');
@@ -66,7 +66,7 @@ class LoadProduit implements FixtureInterface
         $manager->persist($produit4);
 
         $produit5 = new Produit();
-        $produit5 ->setPrix('139');
+        $produit5 ->setPrix('139.00');
         $produit5 ->setStock(16);
         $produit5 ->setLibelleProduit('FGX');
         $produit5 ->setDescriptionProduit('Parfait pour découper les SISR !');
@@ -82,7 +82,7 @@ class LoadProduit implements FixtureInterface
 
         $produit6 = new Produit();
         $produit6 ->setLibelleProduit('Affûteur');
-        $produit6 ->setPrix('25');
+        $produit6 ->setPrix('25.00');
         $produit6 ->setOrigine('Brésil');
         $produit6 ->setDescriptionProduit('Utile dans toutes les situations.');
         $produit6 ->setMateriauxLame('Inox');
@@ -96,7 +96,7 @@ class LoadProduit implements FixtureInterface
 
         $produit7 = new Produit();
         $produit7 ->setLibelleProduit('Military Police');
-        $produit7 ->setPrix('63');
+        $produit7 ->setPrix('63.00');
         $produit7 ->setOrigine('USA');
         $produit7 ->setDescriptionProduit('Véritable couteau de la police américaine.');
         $produit7 ->setMateriauxLame('Acier');
@@ -110,7 +110,7 @@ class LoadProduit implements FixtureInterface
 
         $produit8 = new Produit();
         $produit8 ->setLibelleProduit('Colombian Jungle Sawback');
-        $produit8 ->setPrix('63');
+        $produit8 ->setPrix('63.00');
         $produit8 ->setOrigine('Colombie');
         $produit8 ->setDescriptionProduit('Machette de survie');
         $produit8 ->setMateriauxLame('Acier');
@@ -124,7 +124,7 @@ class LoadProduit implements FixtureInterface
 
         $produit9 = new Produit();
         $produit9 ->setLibelleProduit('Rainbow');
-        $produit9 ->setPrix('63');
+        $produit9 ->setPrix('63.00');
         $produit9 ->setOrigine('USA');
         $produit9 ->setDescriptionProduit('Reprodution du populaire couteau russe de 1996.');
         $produit9 ->setMateriauxLame('Acier');
@@ -138,7 +138,7 @@ class LoadProduit implements FixtureInterface
 
         $produit10= new Produit();
         $produit10->setLibelleProduit('Tiger Steel');
-        $produit10->setPrix('129');
+        $produit10->setPrix('129.00');
         $produit10->setOrigine('France');
         $produit10->setDescriptionProduit('Parfait pour ce débarrasser du chat en toute discrétion !');
         $produit10->setMateriauxLame('Acier');
@@ -152,7 +152,7 @@ class LoadProduit implements FixtureInterface
 
         $produit11= new Produit();
         $produit11->setLibelleProduit('Lame déchue');
-        $produit11->setPrix('49');
+        $produit11->setPrix('49.00');
         $produit11->setOrigine('France');
         $produit11->setDescriptionProduit('Parfait pour voler des vies.');
         $produit11->setMateriauxLame('Acier');
@@ -166,7 +166,7 @@ class LoadProduit implements FixtureInterface
 
         $produit12= new Produit();
         $produit12->setLibelleProduit('Excalibur');
-        $produit12->setPrix('547');
+        $produit12->setPrix('547.00');
         $produit12->setOrigine('France');
         $produit12->setDescriptionProduit('La lame légendaire.');
         $produit12->setMateriauxLame('Acier');
@@ -179,7 +179,7 @@ class LoadProduit implements FixtureInterface
         $manager->persist($produit12);
 
         $produit13 = new Produit();
-        $produit13->setPrix('25');
+        $produit13->setPrix('25.00');
         $produit13->setStock(365);
         $produit13->setLibelleProduit('Peroquet');
         $produit13->setDescriptionProduit('Multiples couleurs scintillantes.');
@@ -193,7 +193,7 @@ class LoadProduit implements FixtureInterface
         $manager->persist($produit13);
 
         $produit14 = new Produit();
-        $produit14->setPrix('238');
+        $produit14->setPrix('238.00');
         $produit14->setStock(15);
         $produit14->setLibelleProduit('L\'Oprimé');
         $produit14->setDescriptionProduit('Ce couteau déborde de d\'oppression.');
@@ -207,7 +207,7 @@ class LoadProduit implements FixtureInterface
         $manager->persist($produit14);
 
         $produit15 = new Produit();
-        $produit15->setPrix('239');
+        $produit15->setPrix('239.00');
         $produit15->setStock(5);
         $produit15->setLibelleProduit('The Banana');
         $produit15->setDescriptionProduit('Ce type de couteau se récolte sur certains bananiers.');
@@ -221,7 +221,7 @@ class LoadProduit implements FixtureInterface
         $manager->persist($produit15);
 
         $produit16 = new Produit();
-        $produit16->setPrix('297');
+        $produit16->setPrix('297.00');
         $produit16->setStock(3);
         $produit16->setLibelleProduit('Le 4ième');
         $produit16->setDescriptionProduit('Ce couteau est le 4ième d\'une ancienne collection extrêmement rare.');
@@ -235,7 +235,7 @@ class LoadProduit implements FixtureInterface
         $manager->persist($produit16);
 
         $produit17 = new Produit();
-        $produit17->setPrix('789');
+        $produit17->setPrix('789.00');
         $produit17->setStock(48);
         $produit17->setLibelleProduit('Enormus');
         $produit17->setDescriptionProduit('Ce couteau est d\'une beauté et d\'une finition incroyablement extraordinaire !');
@@ -249,7 +249,7 @@ class LoadProduit implements FixtureInterface
         $manager->persist($produit17);
 
         $produit18 = new Produit();
-        $produit18->setPrix('146');
+        $produit18->setPrix('146.00');
         $produit18->setStock(2);
         $produit18->setLibelleProduit('Krimson Web');
         $produit18->setDescriptionProduit('Parfait pour passer le temps.');
@@ -263,7 +263,7 @@ class LoadProduit implements FixtureInterface
         $manager->persist($produit18);
 
         $produit18 = new Produit();
-        $produit18->setPrix('146');
+        $produit18->setPrix('146.00');
         $produit18->setStock(2);
         $produit18->setLibelleProduit('Faded Red');
         $produit18->setDescriptionProduit('Un Magnifique Karambit faded de couleur vives.');

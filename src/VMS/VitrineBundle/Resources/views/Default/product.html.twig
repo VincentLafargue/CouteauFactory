@@ -26,7 +26,7 @@
                         <a href="{{ path('vms_vitrine_vue', {'id' : produit.getId()}) }}"><img src="{{ asset('img/produits/' ~ produit.getImagePath()) }}" class="recent-thumb" alt=""></a>
                         <h2><a href="{{ path('vms_vitrine_vue', {'id' : produit.getId()}) }}">{{ produit.getLibelleProduit() }}</a></h2>
                         <div class="product-sidebar-price">
-                            <ins>{{ produit.getPrix() }}.00€</ins>
+                            <ins>{{ produit.getPrix() }}€</ins>
                         </div>
                     </div>
                     {% endfor %}
@@ -60,7 +60,7 @@
                             <div class="product-inner">
                                 <h2 class="product-name">{{ produit.getLibelleProduit() }}</h2>
                                 <div class="product-inner-price">
-                                    <ins>{{ produit.getPrix() }}.00€</ins>
+                                    <ins>{{ produit.getPrix() }}€</ins>
                                 </div>
 
                                 <form action="{{ path('vms_cart_add', {'id': produit.getId()}) }}" class="cart" method="get">
@@ -87,7 +87,7 @@
                                             <h2>Caractéristiques</h2>
                                             <p>
                                                 <ins>Nom</ins>:  {{ produit.getLibelleproduit() }}<br>
-                                                <ins>Prix</ins>: {{ produit.getPrix() }}.00€<br>
+                                                <ins>Prix</ins>: {{ produit.getPrix() }}€<br>
                                                 <ins>En stock</ins>: {{ produit.getstock() }} exemplaires<br>
                                                 <ins>Taille</ins>: {{ produit.getTaille() }}cm<br>
                                                 <ins>Matériaux de la lame</ins>: {{ produit.getMateriauxLame() }}<br>
@@ -133,13 +133,13 @@
                                 <div class="product-f-image">
                                     <img src="{{ asset('img/produits/' ~ produit.getImagePath()) }}" alt="" style="height: 160px">
                                     <div class="product-hover">
-                                        <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Ajouter panier</a>
+                                        <a href="{{ path('vms_cart_add', {'id': produit.getId()}) }}" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Ajouter panier</a>
                                         <a href="{{ path('vms_vitrine_vue', {id: produit.getId() }) }}" class="view-details-link"><i class="fa fa-link"></i> Détails</a>
                                     </div>
                                 </div>
                                 <h2><a href="{{ path('vms_vitrine_vue', {id: produit.getId() }) }}">{{ produit.getLibelleProduit }}</a></h2>
                                 <div class="product-carousel-price">
-                                    <ins>{{ produit.getPrix() }}.00€</ins>
+                                    <ins>{{ produit.getPrix() }}€</ins>
                                 </div>
                             </div>
                             {% endfor %}

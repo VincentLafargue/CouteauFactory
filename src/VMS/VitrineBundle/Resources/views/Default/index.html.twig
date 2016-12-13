@@ -145,7 +145,7 @@
                                 </div>
                                 <h2><a href="{{ path('vms_vitrine_vue', {'id': produit.getId()}) }}">{{ produit.getLibelleProduit() }}</a></h2>
                                 <div class="product-carousel-price">
-                                    <ins>{{ produit.getPrix() }}.00€</ins>
+                                    <ins>{{ produit.getPrix() }}€</ins>
                                 </div>
                             </div>
                                 {% endfor %}
@@ -310,7 +310,7 @@
                                 <i class="fa fa-star"></i>
                             </div>
                             <div class="product-wid-price">
-                                <ins>{{ produit.getPrix() }}.00€</ins>
+                                <ins>{{ produit.getPrix() }}€</ins>
                             </div>
                         </div>
                         {% endfor %}
