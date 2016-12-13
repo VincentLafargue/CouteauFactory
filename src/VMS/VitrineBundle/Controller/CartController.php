@@ -125,6 +125,8 @@ class CartController extends Controller
             ));
         }
         else{
+            $this->get('session')->getFlashBag()->add('fail', 'Veuillez vous connecter pour passer votre commande');
+
             return $this->redirect($this->generateUrl('fos_user_security_login'));
         }
 
