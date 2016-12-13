@@ -5,7 +5,7 @@
         {% if app.request.hasPreviousSession %}
             {% for type, messages in app.session.flashbag.all() %}
                 {% for message in messages %}
-                    <div style="text-align: center;" class="flash-{{ type }} alert alert-danger">
+                    <div  style="text-align: center;" class="flash-{{ type }} alert alert-warning">
                         {{ message }}
                     </div>
                 {% endfor %}
@@ -17,5 +17,4 @@
 
             {% endblock fos_user_content %}
         </div>
-
 {% endblock %}
