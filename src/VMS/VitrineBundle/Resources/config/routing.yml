@@ -62,7 +62,7 @@ vms_cart_change:
 vms_cart_remove:
     path:    /cart/remove/{id}
     defaults:
-        _controller:    VMSVitrineBundle:Cart:
+        _controller:    VMSVitrineBundle:Cart:remove
 
 vms_cart_address:
     path:    /address

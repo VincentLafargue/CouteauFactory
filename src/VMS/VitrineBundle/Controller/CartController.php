@@ -105,6 +105,12 @@ class CartController extends Controller
     public function removeAction(Request $request, $id)
     {
         $session = $request->getSession();
+
+        if (!$session->has('cart'))
+        {
+            $session->set('cart', array());
+        }
+
         $cart = $session->get('cart');
 
         if (array_key_exists($id, $cart))
@@ -126,7 +132,6 @@ class CartController extends Controller
 
         ));
     }
-
 
     public function checkoutAction()
     {
