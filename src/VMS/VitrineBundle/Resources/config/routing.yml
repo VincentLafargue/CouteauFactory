@@ -11,12 +11,10 @@ vms_accueil:
 
 
 vms_vitrine:
-    path: /vitrine/{page}
+    path: /vitrine
     defaults:
         _controller:    VMSVitrineBundle:Vitrine:index
-        page:    1
-    requirements:
-       page:    \d*
+
 
 vms_vitrine_vue:
     path:    /product/{id}

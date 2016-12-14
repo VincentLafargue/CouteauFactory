@@ -9,11 +9,11 @@
 namespace VMS\VitrineBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use VMS\VitrineBundle\VMSVitrineBundle;
+use Symfony\Component\HttpFoundation\Request;
 
 class  VitrineController extends Controller
 {
-    public function indexAction($page)
+    public function indexAction(Request $request)
     {
         $repository = $this
             ->getDoctrine()
@@ -23,9 +23,21 @@ class  VitrineController extends Controller
 
         $listProduits = $repository->findAll();
 
+        /**
+         * @var $paginator \Knp\Component\Pager\Paginator
+         */
+        $paginator = $this->get('knp_paginator');
+        $result = $paginator->paginate(
+            $listProduits,
+            $request->query->getInt('page',1),
+            $request->query->getInt('limit',8)
+        );
+
+
+
         return $this->render('VMSVitrineBundle:Default:vitrine.html.twig',
             array(
-                'listProduits' => $listProduits
+                'listProduits' => $result
             ));
     }
 
