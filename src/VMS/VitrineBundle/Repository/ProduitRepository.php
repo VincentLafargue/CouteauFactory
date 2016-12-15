@@ -20,7 +20,6 @@ class ProduitRepository extends \Doctrine\ORM\EntityRepository
 
     }
 
-
     public function findByCategoryLimit($categorie, $limit, $id)
     {
         $qb = $this->createQueryBuilder('p');
@@ -42,5 +41,15 @@ class ProduitRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('array', $array)
         ;
         return $dql->getQuery()->getResult();
+    }
+
+    public function findLikeText($text)
+    {
+        $qb = $this->createQueryBuilder('p');
+
+        $qb->where('p.libelleProduit LIKE :text')
+            ->setParameter('text', '%'.$text.'%');
+
+        return $qb->getQuery()->getResult();
     }
 }

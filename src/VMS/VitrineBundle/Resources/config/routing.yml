@@ -10,13 +10,17 @@ vms_vitrine:
     defaults:
         _controller:    VMSVitrineBundle:Vitrine:index
 
-
 vms_vitrine_vue:
     path:    /product/{id}
     defaults:
         _controller:    VMSVitrineBundle:Vitrine:vue
     requirements:
         id:    \d+
+
+vms_vitrine_search:
+    path:    /search
+    defaults:
+        _controller:    VMSVitrineBundle:Vitrine:search
 
 
 vms_cart:

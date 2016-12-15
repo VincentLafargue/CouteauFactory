@@ -183,4 +183,5 @@ class CartController extends Controller
             'price' => $price
         ));
     }
+    
 }

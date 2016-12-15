@@ -21,7 +21,19 @@ class  VitrineController extends Controller
             ->getRepository('VMSVitrineBundle:Produit')
         ;
 
-        $listProduits = $repository->findAll();
+        $session = $request->getSession();
+
+        $products = $session->get('products');
+
+        if(isset($products))
+        {
+            $listProduits = $products;
+            $session->remove('products');
+        }
+        else
+        {
+            $listProduits = $repository->findAll();
+        }
 
         /**
          * @var $paginator \Knp\Component\Pager\Paginator
@@ -62,32 +74,24 @@ class  VitrineController extends Controller
             "listProduitAll" => $listProduitAll
         ));
     }
-
-    public function ajouterAction()
+   
+    public function searchAction(Request $request)
     {
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('VMSVitrineBundle:Produit')
+        ;
 
+        $text = $request->query->get('text');
+
+        $session = $request->getSession();
+
+        $products = $repository->findLikeText($text);
+
+        $session->set('products', $products);
+
+        return $this->redirect($this->generateUrl('vms_vitrine'));
     }
-
-    public function editerAction($id)
-    {
-
-    }
-
-    public function supprimerAction($id)
-    {
-
-    }
-
-    
-    public function connexionAction()
-    {
-    
-    }
-
-    public function inscriptionAction()
-    {
-
-    }
-
 
 }
