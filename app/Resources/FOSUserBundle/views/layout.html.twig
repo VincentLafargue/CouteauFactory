@@ -5,7 +5,7 @@
         {% if app.request.hasPreviousSession %}
             {% for type, messages in app.session.flashbag.all() %}
                 {% for message in messages %}
-                    <div  style="text-align: center;" class="flash-{{ type }} alert alert-warning">
+                    <div style="margin: 20px;" class="flash-{{ type }} alert alert-warning text-center">
                         {{ message }}
                     </div>
                 {% endfor %}
