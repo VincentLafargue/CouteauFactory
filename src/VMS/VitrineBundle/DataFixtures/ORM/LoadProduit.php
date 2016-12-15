@@ -81,7 +81,7 @@ class LoadProduit implements FixtureInterface
 
 
         $produit6 = new Produit();
-        $produit6 ->setLibelleProduit('Affûteur');
+        $produit6 ->setLibelleProduit('Affuteur');
         $produit6 ->setPrix('25.00');
         $produit6 ->setOrigine('Brésil');
         $produit6 ->setDescriptionProduit('Utile dans toutes les situations.');
@@ -151,7 +151,7 @@ class LoadProduit implements FixtureInterface
         $manager->persist($produit10);
 
         $produit11= new Produit();
-        $produit11->setLibelleProduit('Lame déchue');
+        $produit11->setLibelleProduit('Lame dechue');
         $produit11->setPrix('49.00');
         $produit11->setOrigine('France');
         $produit11->setDescriptionProduit('Parfait pour voler des vies.');
@@ -195,7 +195,7 @@ class LoadProduit implements FixtureInterface
         $produit14 = new Produit();
         $produit14->setPrix('238.00');
         $produit14->setStock(15);
-        $produit14->setLibelleProduit('L\'Oprimé');
+        $produit14->setLibelleProduit('L\'Oprime');
         $produit14->setDescriptionProduit('Ce couteau déborde de d\'oppression.');
         $produit14->setTaille('17');
         $produit14->setMateriauxLame('Fibre de verre');
@@ -223,7 +223,7 @@ class LoadProduit implements FixtureInterface
         $produit16 = new Produit();
         $produit16->setPrix('297.00');
         $produit16->setStock(3);
-        $produit16->setLibelleProduit('Le 4ième');
+        $produit16->setLibelleProduit('Le 4ieme');
         $produit16->setDescriptionProduit('Ce couteau est le 4ième d\'une ancienne collection extrêmement rare.');
         $produit16->setTaille('45');
         $produit16->setMateriauxLame('Ancienne pierre runique');
