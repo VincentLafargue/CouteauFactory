@@ -5,11 +5,6 @@ vms_accueil:
 
 
 
-
-
-
-
-
 vms_vitrine:
     path: /vitrine
     defaults:
@@ -22,26 +17,6 @@ vms_vitrine_vue:
         _controller:    VMSVitrineBundle:Vitrine:vue
     requirements:
         id:    \d+
-
-vms_vitrine_ajouter:
-    path:   /ajouter
-    defaults:
-        _controller:    VMSVitrineBundle:Vitrine:ajouter
-
-vms_vitrine_editer:
-    path:    /editer/{id}
-    defaults:
-         _controller:    VMSVitrineBundle:Vitrine:editer
-    requirements:
-        id:     \d+
-
-vms_vitrine_supprimer:
-    path:    /supprimer/{id}
-    defaults:
-        _controller: VMSVitrineBundle:Vitrine:supprimer
-    requirements:
-        id:    \d+
-
 
 
 vms_cart:
