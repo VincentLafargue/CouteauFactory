@@ -6,6 +6,7 @@
 
 {% block vms_vitrinebody %}
 
+    {% block bandeau %}
     <div class="product-big-title-area">
         <div class="container">
             <div class="row">
@@ -17,12 +18,29 @@
             </div>
         </div>
     </div>
+    {% endblock %}
 
     <div class="single-product-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
-            <div class="row">
 
+            {% block recherche %}
+                <div class="row">
+                    <div class="col-lg-6">
+                    </div><!-- /.col-lg-6 -->
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                            <input type="search" class="form-control" placeholder="Rechercher...">
+                            <span class="input-group-btn">
+                                <button style="margin-bottom: 60px;" class="btn btn-default" type="button" href="{{ path('vms') }}">Go!</button>
+                            </span>
+                        </div><!-- /input-group -->
+                    </div><!-- /.col-lg-6 -->
+                </div><!-- /.row -->
+            {% endblock %}
+
+            {% block produits %}
+            <div class="row">
                 {% for produit in listProduits %}
                 <div class="col-md-3 col-sm-6">
                     <div class="single-shop-product">
@@ -41,12 +59,16 @@
                 </div>
                 {% endfor %}
             </div>
+            {% endblock %}
 
+            {% block pagination %}
             <div class="row">
                 <div class="navigation text-center">
                     {{ knp_pagination_render(listProduits) }}
                 </div>
             </div>
+            {% endblock %}
+
         </div>
     </div>
 {% endblock %}
