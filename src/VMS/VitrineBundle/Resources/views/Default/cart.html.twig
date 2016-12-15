@@ -42,7 +42,7 @@
 
         <div class="product-content-right">
             <div class="woocommerce">
-                <form method="post" action="{{ path('vms_cart_address') }}">
+                <form method="post" action="https://www.sandbox.paypal.com/cgi-bin/webscr">
                     <table cellspacing="0" class="shop_table cart">
                         <thead>
                         <tr>
@@ -98,6 +98,55 @@
 
                         {% endfor %}
                         <!-- Fin des produits -->
+
+
+
+
+                        {% set i = 0 %}
+                        <!--Prix ht-->
+                        {% for product in products %}
+                            {% set i = i+1 %}
+                            <input type='hidden' value='{{ product.getPrix()}}' name="{{'amount_'~ i}}" />
+
+                            <!--Taxe (tva) Mais pas besoin si on le met dans total a payer-->
+                            <input name="{{ 'tax_'~ i }}" type="hidden" value="{{ product.getPrix() * 1.15  - product.getPrix() }}" />
+                        {% endfor %}
+                        <!--Type de monnaie-->
+                        <input name="currency_code" type="hidden" value="EUR" />
+                        <!--Frais de port-->
+                        <input name="shipping" type="hidden" value="0.00" />
+
+
+                        <!--Pge de redirection lors de la validation paiement -->
+                        <input name="return" type="hidden" value="http://votredomaine/paiementValide.php" />
+                        <!--Page de redirection si l'acheteur annule-->
+                        <input name="cancel_return" type="hidden" value="http://votredomaine/paiementAnnule.php" />
+                        <!--Page appeler par IPN qui permettra d'enregistrer les transaction (si nécessaire)-->
+                        <input name="notify_url" type="hidden" value="http://votredomaine/validationPaiement.php" />
+                        <!--Parametre qui permet de defini le button comme un btn acheter-->
+                        <input name="cmd" type="hidden" value="_cart" />
+                        <input type="hidden" name="upload" value="1">
+                        <!--Adresse email du compte buissness-->
+                        <input name="business" type="hidden" value="v.lafargue-facilitator@laposte.net" />
+                        <!--Nos du produit et des produit vendu (éviter les accents)-->
+                        {% set t = 0%}
+                        {% for product in products %}
+                            {% set t = t+1 %}
+                            <input name="{{'item_name_' ~ t }}" type="hidden" value="{{ product.getLibelleProduit }}" />
+                            {% set number = cart[product.getId()] %}
+
+                            <input name="{{'quantity_' ~ t }}" type="hidden" value="{{ number }}" />
+                        {% endfor %}
+                        <!--Permet d'eviter le commentaire des utilisateur sur le passage du paiement-->
+                        <input name="no_note" type="hidden" value="1" />
+                        <!--Langue du formulaire paypal qui va suivre-->
+                        <input name="lc" type="hidden" value="FR" />
+                        <!--parametre paypal a pas toucher-->
+                        <input name="bn" type="hidden" value="PP-BuyNowBF" />
+                        <!--id de la session utilisateur-->
+                        <input name="custom" type="hidden" value="5" />
+
+
 
                         <tr>
                             <td class="actions" colspan="6">
