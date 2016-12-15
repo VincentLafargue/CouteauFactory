@@ -14,9 +14,11 @@
             <div class="col-md-4">
                 <div class="single-sidebar">
                     <h2 class="sidebar-title">Rechercher un produit</h2>
-                    <form action="">
-                        <input type="text" placeholder="Ne fonctionne pas encore..">
-                        <input type="submit" value="Chercher">
+                    <form method="get" action="{{ path('vms_vitrine_search') }}" class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" name="text" class="form-control" placeholder="Rechercher...">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
                     </form>
                 </div>
                 <div class="single-sidebar">
