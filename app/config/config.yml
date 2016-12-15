@@ -72,6 +72,17 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
     user_class: VMS\VitrineBundle\Entity\User
+    registration:
+        confirmation:
+            from_email:
+                address:        vincent.lafargue66@gmail.com
+                sender_name:    Coutow Factory
+    resetting:
+        email:
+            from_email:
+                address:        vincent.lafargue66@gmail.com
+                sender_name:    Coutow Factory
+
 
 
 #KNP Paginator
