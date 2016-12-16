@@ -1,6 +1,14 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="fos_user_user_show">
-    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
-    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+<div class="row" style="margin-top: 20px;margin-bottom: 20px;">
+    <div class="col-md-6 col-md-offset-3">
+
+        <div class="fos_user_user_show">
+            <label for="username">{{ 'profile.show.username'|trans }}</label> :<input disabled="disabled" type="text" id="username" class="form-control" value="{{ user.username }}" name="username"  required="required" />
+            <label for="mail">{{ 'profile.show.email'|trans }}</label> : <input disabled="disabled" type="text" id="mail" class="form-control" value="{{ user.email }}" name="mail"  required="required" />
+
+            <a href="{{ path('fos_user_profile_edit') }}"> <input type="submit"  value="{{ 'profile.edit.submit'|trans }}" style="margin-top:15px;" /></a>   <a href="{{ path('fos_user_change_password') }}"> <input type="submit"  value="{{ 'change_password.submit'|trans }}" style="margin-top:15px;" /></a>
+        </div>
+
+    </div>
 </div>

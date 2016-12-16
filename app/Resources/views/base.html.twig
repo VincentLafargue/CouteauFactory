@@ -49,7 +49,7 @@
                                 <div class="user-menu">
                                     <ul>
                                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                            <li><a href="#"><i class="fa fa-user"></i> Mon Compte ({{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }})</a></li>
+                                            <li><a href="{{ path('fos_user_profile_show') }}"><i class="fa fa-user"></i> Mon Compte ({{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }})</a></li>
                                             <li><a href="#"><i class="fa fa-heart"></i> Liste de souhait</a></li>
                                             <li><a href="{{ path('vms_cart') }}"><i class="fa fa-user"></i> Mon panier</a></li>
                                             <li><a href=""><i class="fa fa-user"></i> Payer</a></li>
