@@ -22,6 +22,10 @@ vms_vitrine_search:
     defaults:
         _controller:    VMSVitrineBundle:Vitrine:search
 
+vms_vitrine_filters:
+    path:    /filters
+    defaults:
+        _controller:    VMSVitrineBundle:Vitrine:filters
 
 vms_cart:
     path:    /cart

@@ -94,4 +94,26 @@ class  VitrineController extends Controller
         return $this->redirect($this->generateUrl('vms_vitrine'));
     }
 
+    public function filtersAction(Request $request)
+    {
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('VMSVitrineBundle:Produit')
+        ;
+
+        $category = $request->query->get('category');
+        $priceMin = $request->query->get('priceMin');
+        $priceMax = $request->query->get('priceMax');
+
+
+        $session = $request->getSession();
+
+        $products = $repository->findFilters($category, $priceMin, $priceMax);
+
+        $session->set('products', $products);
+
+        return $this->redirect($this->generateUrl('vms_vitrine'));
+    }
+
 }

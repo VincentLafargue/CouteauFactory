@@ -52,4 +52,24 @@ class ProduitRepository extends \Doctrine\ORM\EntityRepository
 
         return $qb->getQuery()->getResult();
     }
+
+    public function findFilters($category = null, $priceMin = 0, $priceMax = 1000)
+    {
+        $qb = $this->createQueryBuilder('p');
+
+        if($category == null){
+            $qb->where('p.prix BETWEEN :min AND :max')
+                ->setParameter('min', $priceMin)
+                ->setParameter('max', $priceMax);
+        }
+        else{
+            $qb->where('p.categorie = :categorie')
+                ->setParameter('categorie', $category)
+                ->andWhere('p.prix BETWEEN :min AND :max')
+                ->setParameter('min', $priceMin)
+                ->setParameter('max', $priceMax);
+        }
+
+        return $qb->getQuery()->getResult();
+    }
 }
