@@ -20,7 +20,7 @@ class LoadProduit implements FixtureInterface
         $produit1 ->setOrigine('Chine');
         $produit1 ->setTauxReduc('0');
         $produit1->setImagePath('couteau_infini.jpg');
-        $produit1->setCategorie('Couteau à cran');
+        $produit1->setCategorie('Couteau a cran');
         $manager->persist($produit1);
 
         $produit2 = new Produit();
@@ -34,7 +34,7 @@ class LoadProduit implements FixtureInterface
         $produit2 ->setOrigine('France');
         $produit2 ->setTauxReduc('0');
         $produit2->setImagePath('couteau_cooked.jpg');
-        $produit2->setCategorie('Couteau à cran');
+        $produit2->setCategorie('Couteau a cran');
         $manager->persist($produit2);
 
         $produit3 = new Produit();
@@ -48,7 +48,7 @@ class LoadProduit implements FixtureInterface
         $produit3 ->setOrigine('Chine');
         $produit3 ->setTauxReduc('0');
         $produit3->setImagePath('couteau_rappeuse.jpg');
-        $produit3->setCategorie('Couteau à cran');
+        $produit3->setCategorie('Couteau a cran');
         $manager->persist($produit3);
 
         $produit4 = new Produit();
@@ -91,7 +91,7 @@ class LoadProduit implements FixtureInterface
         $produit6 ->setTaille('12');
         $produit6 ->setTauxReduc('0');
         $produit6->setImagePath('couteau_affuteur.jpg');
-        $produit6->setCategorie('Couteau à cran');
+        $produit6->setCategorie('Couteau a cran');
         $manager->persist($produit6);
 
         $produit7 = new Produit();
@@ -105,7 +105,7 @@ class LoadProduit implements FixtureInterface
         $produit7 ->setTaille('12');
         $produit7 ->setTauxReduc('0');
         $produit7->setImagePath('couteau_millitarypolice.jpg');
-        $produit7->setCategorie('Couteau à cran');
+        $produit7->setCategorie('Couteau a cran');
         $manager->persist($produit7);
 
         $produit8 = new Produit();
@@ -133,7 +133,7 @@ class LoadProduit implements FixtureInterface
         $produit9 ->setTaille('16');
         $produit9 ->setTauxReduc('0');
         $produit9->setImagePath('couteau_rainbow.jpg');
-        $produit9->setCategorie('Couteau à cran');
+        $produit9->setCategorie('Couteau a cran');
         $manager->persist($produit9);
 
         $produit10= new Produit();
@@ -231,7 +231,7 @@ class LoadProduit implements FixtureInterface
         $produit16->setOrigine('Inconnue');
         $produit16->setTauxReduc('0');
         $produit16->setImagePath('couteau_4.jpg');
-        $produit16->setCategorie('Couteau à cran');
+        $produit16->setCategorie('Couteau a cran');
         $manager->persist($produit16);
 
         $produit17 = new Produit();
