@@ -7,20 +7,20 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class UsersController extends Controller
+class UserController extends Controller
 {
     public function getUserAction($id, Request $request)
     {
-        $product = $this->getDoctrine()->getManager()->getRepository('VMSVitrineBundle:User')->find($id);
+        $user = $this->getDoctrine()->getManager()->getRepository('VMSVitrineBundle:User')->find($id);
         $formatted = [];
 
         $formatted[] = [
-            'id' => $product->getId(),
-            'libelle' => $product->getlibelleProduit(),
-            'prix' => $product->getPrix(),
+            'id' => $user->getId(),
+            'username' => $user->getUsername(),
+            'mail' => $user->getEmail(),
         ];
 
-        if (empty($product)) {
+        if (empty($user)) {
             return new JsonResponse(['message' => 'Place not found'], Response::HTTP_NOT_FOUND);
         }
 
@@ -35,11 +35,11 @@ class UsersController extends Controller
         foreach ($users as $user)
             $formatted[] = [
                 'id' => $user->getId(),
-                'libelle' => $user->getlibelleProduit(),
-                'prix' => $user->getPrix(),
+                'username' => $user->getUsername(),
+                'mail' => $user->getEmail(),
             ];
 
-        if (empty($products)) {
+        if (empty($users)) {
             return new JsonResponse(['message' => 'Place not found'], Response::HTTP_NOT_FOUND);
         }
 
