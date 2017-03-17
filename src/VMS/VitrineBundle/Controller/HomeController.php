@@ -8,6 +8,10 @@
 namespace VMS\VitrineBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use VMS\VitrineBundle\Entity\Produit;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
 
 class HomeController extends Controller
 {
@@ -23,5 +27,6 @@ class HomeController extends Controller
             'listProduit' => $listProduit5,
             'listProduit3' => $listProduit3
         ));
-    }
+    }   
+    
 }

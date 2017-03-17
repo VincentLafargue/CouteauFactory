@@ -4,3 +4,11 @@ vms_vitrine:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+produits:
+    type:     rest
+    resource: VMS\VitrineBundle\Controller\ProduitController
+
+users:
+    type:     rest
+    resource: VMS\VitrineBundle\Controller\UserController

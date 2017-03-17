@@ -3,8 +3,6 @@ vms_accueil:
     defaults:
         _controller:    VMSVitrineBundle:Home:index
 
-
-
 vms_vitrine:
     path: /vitrine
     defaults:

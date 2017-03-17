@@ -101,7 +101,7 @@ class  VitrineController extends Controller
             ->getManager()
             ->getRepository('VMSVitrineBundle:Produit')
         ;
-
+        
         $category = $request->query->get('category');
         $priceMin = $request->query->get('priceMin');
         $priceMax = $request->query->get('priceMax');
