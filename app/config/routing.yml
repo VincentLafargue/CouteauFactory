@@ -7,8 +7,8 @@ fos_user:
 
 produits:
     type:     rest
-    resource: VMS\VitrineBundle\Controller\ProduitController
+    resource: VMS\VitrineBundle\Controller\API\ProduitController
 
 users:
     type:     rest
-    resource: VMS\VitrineBundle\Controller\UserController
+    resource: VMS\VitrineBundle\Controller\API\UserController

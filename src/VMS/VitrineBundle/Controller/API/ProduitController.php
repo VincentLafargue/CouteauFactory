@@ -1,6 +1,6 @@
 <?php
 
-namespace VMS\VitrineBundle\Controller;
+namespace VMS\VitrineBundle\Controller\API;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Session\Session;
