@@ -72,6 +72,9 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
     user_class: VMS\VitrineBundle\Entity\User
+    from_email:
+        address:        vincent.lafargue66@gmail.com
+        sender_name:    Coutow Factory
     service:
         mailer: fos_user.mailer.twig_swift
     registration:
