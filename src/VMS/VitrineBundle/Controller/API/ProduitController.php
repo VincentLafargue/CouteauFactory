@@ -7,6 +7,8 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Request;
 use VMS\VitrineBundle\Entity\Produit;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
+use FOS\RestBundle\Controller\Annotations as Rest;
 
 class ProduitController extends Controller
 {
@@ -47,4 +49,17 @@ class ProduitController extends Controller
         return new JsonResponse($formatted);
     }
 
+    /**
+     * @Rest\View()
+     * @Rest\Post("/places")
+     */
+    public function postProduitsAction(Request $request)
+    {
+        return [
+            'payload' => [
+                $request->get('id'),
+                $request->get('prix')
+            ]
+        ];
+    }
 }
