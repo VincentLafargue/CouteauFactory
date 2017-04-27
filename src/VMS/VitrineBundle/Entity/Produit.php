@@ -28,7 +28,6 @@ class Produit
      */
     private $image_path;
 
-
     /**
      * @var int
      *
@@ -41,19 +40,12 @@ class Produit
      *
      * @ORM\Column(name="stock", type="integer", nullable=true)
      */
-    private $stock;
+    private $stock;    
 
     /**
      * @var string
      *
-     * @ORM\Column(name="categorie", type="string", nullable=true)
-     */
-    private $categorie;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="libelle_produit", type="string", length=255, nullable=true)
+     * @ORM\Column(name="libelle_produit", type="string", length=255, nullable=false)
      */
     private $libelleProduit;
 
@@ -81,14 +73,14 @@ class Produit
     /**
      * @var string
      *
-     * @ORM\Column(name="poids", type="string", length=255)
+     * @ORM\Column(name="poids", type="string", length=255, nullable=true)
      */
     private $poids;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="origine", type="string", length=255)
+     * @ORM\Column(name="origine", type="string", length=255, nullable=true)
      */
     private $origine;
 
@@ -99,15 +91,45 @@ class Produit
      */
     private $tauxReduc;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="VMS\VitrineBundle\Entity\Categorie")
+     */
+    private $categorie;
+
+
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set imagePath
+     *
+     * @param string $imagePath
+     *
+     * @return Produit
+     */
+    public function setImagePath($imagePath)
+    {
+        $this->image_path = $imagePath;
+
+        return $this;
+    }
+
+    /**
+     * Get imagePath
+     *
+     * @return string
+     */
+    public function getImagePath()
+    {
+        return $this->image_path;
     }
 
     /**
@@ -127,7 +149,7 @@ class Produit
     /**
      * Get prix
      *
-     * @return int
+     * @return string
      */
     public function getPrix()
     {
@@ -151,7 +173,7 @@ class Produit
     /**
      * Get stock
      *
-     * @return int
+     * @return integer
      */
     public function getStock()
     {
@@ -327,37 +349,13 @@ class Produit
     }
 
     /**
-     * Set imagePath
-     *
-     * @param string $imagePath
-     *
-     * @return Produit
-     */
-    public function setImagePath($imagePath)
-    {
-        $this->image_path = $imagePath;
-
-        return $this;
-    }
-
-    /**
-     * Get imagePath
-     *
-     * @return string
-     */
-    public function getImagePath()
-    {
-        return $this->image_path;
-    }
-
-    /**
      * Set categorie
      *
-     * @param string $categorie
+     * @param \VMS\VitrineBundle\Entity\Categorie $categorie
      *
      * @return Produit
      */
-    public function setCategorie($categorie)
+    public function setCategorie(\VMS\VitrineBundle\Entity\Categorie $categorie = null)
     {
         $this->categorie = $categorie;
 
@@ -367,7 +365,7 @@ class Produit
     /**
      * Get categorie
      *
-     * @return string
+     * @return \VMS\VitrineBundle\Entity\Categorie
      */
     public function getCategorie()
     {

@@ -22,24 +22,24 @@ class Categorie
     private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id_categorie", type="integer", unique=true)
-     */
-    private $idCategorie;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="libelle_categorie", type="string", length=255)
      */
-    private $libelleCategorie;
+    private $libelle;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description_categorie", type="string", length=255, nullable=true)
+     */
+    private $description;
+  
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -47,50 +47,50 @@ class Categorie
     }
 
     /**
-     * Set idCategorie
+     * Set libelle
      *
-     * @param integer $idCategorie
+     * @param string $libelle
      *
      * @return Categorie
      */
-    public function setIdCategorie($idCategorie)
+    public function setLibelle($libelle)
     {
-        $this->idCategorie = $idCategorie;
+        $this->libelle = $libelle;
 
         return $this;
     }
 
     /**
-     * Get idCategorie
-     *
-     * @return int
-     */
-    public function getIdCategorie()
-    {
-        return $this->idCategorie;
-    }
-
-    /**
-     * Set libelleCategorie
-     *
-     * @param string $libelleCategorie
-     *
-     * @return Categorie
-     */
-    public function setLibelleCategorie($libelleCategorie)
-    {
-        $this->libelleCategorie = $libelleCategorie;
-
-        return $this;
-    }
-
-    /**
-     * Get libelleCategorie
+     * Get libelle
      *
      * @return string
      */
-    public function getLibelleCategorie()
+    public function getLibelle()
     {
-        return $this->libelleCategorie;
+        return $this->libelle;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Categorie
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

@@ -107,3 +107,5 @@ knp_paginator:
 fos_rest:
     routing_loader:
         include_format: false
+    body_listener:
+            enabled: true

@@ -22,76 +22,19 @@ class Categorie
     private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id_categorie", type="integer", unique=true)
-     */
-    private $idCategorie;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="libelle_categorie", type="string", length=255)
      */
-    private $libelleCategorie;
-
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $libelle;
 
     /**
-     * Set idCategorie
+     * @var string
      *
-     * @param integer $idCategorie
-     *
-     * @return Categorie
+     * @ORM\Column(name="description_categorie", type="string", length=255, nullable=true)
      */
-    public function setIdCategorie($idCategorie)
-    {
-        $this->idCategorie = $idCategorie;
+    private $description;
 
-        return $this;
-    }
 
-    /**
-     * Get idCategorie
-     *
-     * @return int
-     */
-    public function getIdCategorie()
-    {
-        return $this->idCategorie;
-    }
-
-    /**
-     * Set libelleCategorie
-     *
-     * @param string $libelleCategorie
-     *
-     * @return Categorie
-     */
-    public function setLibelleCategorie($libelleCategorie)
-    {
-        $this->libelleCategorie = $libelleCategorie;
-
-        return $this;
-    }
-
-    /**
-     * Get libelleCategorie
-     *
-     * @return string
-     */
-    public function getLibelleCategorie()
-    {
-        return $this->libelleCategorie;
-    }
+  
 }
-
