@@ -8,11 +8,12 @@
 
 namespace AppBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use VMS\VitrineBundle\Entity\Categorie;
 
-class LoadCategorie implements FixtureInterface
+class LoadCategorie extends AbstractFixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
@@ -39,5 +40,15 @@ class LoadCategorie implements FixtureInterface
 
         
         $manager->flush();
+
+        $this->addReference('papillon', $categorie1);
+        $this->addReference('karambit', $categorie2);
+        $this->addReference('cran', $categorie3);
+        $this->addReference('autres', $categorie4);
     }
+    public function getOrder()
+    {
+        return 1;
+    }
+
 }

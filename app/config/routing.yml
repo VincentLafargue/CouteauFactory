@@ -12,3 +12,7 @@ produits:
 users:
     type:     rest
     resource: VMS\VitrineBundle\Controller\API\UserController
+
+categories:
+    type:     rest
+    resource: VMS\VitrineBundle\Controller\API\CategorieController
