@@ -54,21 +54,35 @@ class ProduitRepository extends \Doctrine\ORM\EntityRepository
         return $qb->getQuery()->getResult();
     }
 
-    public function findFilters($categorie, $priceMin = 1, $priceMax = 1000)
+    public function findFilters($categorie, $priceMin, $priceMax)
     {
         $qb = $this->createQueryBuilder('p');
 
-        if($categorie == null){
-            $qb->where('p.prix BETWEEN :min AND :max')
+        //dump($priceMax, $priceMin);
+        if (is_float($priceMin) && is_float($priceMax)) {
+            $qb
+                ->where('p.prix BETWEEN :min AND :max')
                 ->setParameter('min', $priceMin)
                 ->setParameter('max', $priceMax);
+        } elseif (is_float($priceMin)){
+            $qb
+                ->where('p.prix > :priceMin')
+                ->setParameter('priceMin', $priceMin);
+        } elseif (is_float($priceMax)) {
+            $qb
+                ->where('p.prix > :priceMax')
+                ->setParameter('priceMax', $priceMax);
+
         }
-        else{
-            $qb->where('p.categorie = :categorie')
-                ->setParameter('categorie', $categorie)
-                ->andWhere('p.prix BETWEEN :min AND :max')
-                ->setParameter('min', $priceMin)
-                ->setParameter('max', $priceMax);
+
+        // Normalement tu vérifies si catégorie est
+        // une instance d'Entity Category en utilisant ton repo et en faisant une request simple
+        // Du coup là c'est caca mais tant pis
+        if ($categorie != null) {
+            $qb
+                ->innerJoin('p.categorie', 'c')
+                ->where('c.id = :categorie')
+                ->setParameter('categorie', $categorie);
         }
 
         return $qb->getQuery()->getResult();

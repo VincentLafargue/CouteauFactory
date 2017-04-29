@@ -113,7 +113,7 @@ class  VitrineController extends Controller
         $request->getSession()->set('products', $products);
 
         //on redirige vers la page d'afffichage dde la vitrine
-        return $this->redirect($this->generateUrl('vms_vitrine'));
+        return $this->redirect($this->generateUrl('vms_vitrine', ['products', $products]));
     }
 
 }
