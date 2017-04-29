@@ -1,6 +1,7 @@
 <?php
 
 namespace VMS\VitrineBundle\Repository;
+use VMS\VitrineBundle\Entity\Categorie;
 
 /**
  * ProduitRepository
@@ -53,18 +54,18 @@ class ProduitRepository extends \Doctrine\ORM\EntityRepository
         return $qb->getQuery()->getResult();
     }
 
-    public function findFilters($category = null, $priceMin = 0, $priceMax = 1000)
+    public function findFilters($categorie, $priceMin = 1, $priceMax = 1000)
     {
         $qb = $this->createQueryBuilder('p');
 
-        if($category == null){
+        if($categorie == null){
             $qb->where('p.prix BETWEEN :min AND :max')
                 ->setParameter('min', $priceMin)
                 ->setParameter('max', $priceMax);
         }
         else{
             $qb->where('p.categorie = :categorie')
-                ->setParameter('categorie', $category)
+                ->setParameter('categorie', $categorie)
                 ->andWhere('p.prix BETWEEN :min AND :max')
                 ->setParameter('min', $priceMin)
                 ->setParameter('max', $priceMax);

@@ -46,7 +46,7 @@
 
                     <div class="product-breadcroumb">
                         <a href="{{ path('vms_accueil') }}">Accueil</a>
-                        <a href="">{{ produit.getCategorie() }}</a>
+                        <a href="">{{ produit.getCategorie().getLibelle() }}</a>
                         <a href="">{{ produit.getLibelleProduit() }}</a>
                     </div>
 
@@ -75,7 +75,7 @@
                                 </form>
 
                                 <div class="product-inner-category">
-                                    <p>Categorie: <a href="">{{ produit.getCategorie() }}</a>
+                                    <p>Categorie: <a href="">{{ produit.getCategorie().getLibelle() }}</a>
                                 </div>
 
                                 <div role="tabpanel">

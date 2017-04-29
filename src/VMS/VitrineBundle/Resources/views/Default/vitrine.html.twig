@@ -27,13 +27,14 @@
                     <div class="col-lg-6">
                         <form method="get" action="{{ path('vms_vitrine_filters') }}" class="navbar-form navbar-left" >
                             <div class="form-group">
-                                <label for="category">Catégorie :</label>
-                                <select name="category" class="form-control">
+                                <label for="categorie">Catégorie :</label>
+                                <select name="categorie" class="form-control">
+
                                     <option value="">Toute catégories</option>
-                                    <option value="Couteau papillon">Couteau papillon</option>
-                                    <option value="Karambit">Couteau karambit</option>
-                                    <option value="Couteau a cran">Couteau à cran</option>
-                                    <option value="Autre">Autres</option>
+                                    {% for categorie in listCategories %}
+                                    <option value="{{ categorie.getId }}">{{ categorie.getLibelle }}</option>
+                                    {% endfor %}
+
                                 </select>
                             </div>   <button type="submit" class="btn btn-default">Go!</button><br>
                             <div class="form-group">
