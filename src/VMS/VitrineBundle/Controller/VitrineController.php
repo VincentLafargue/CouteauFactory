@@ -10,6 +10,7 @@ namespace VMS\VitrineBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use VMS\VitrineBundle\Repository\ProduitRepository;
 
 class  VitrineController extends Controller
 {
@@ -83,6 +84,7 @@ class  VitrineController extends Controller
    
     public function searchAction(Request $request)
     {
+        /** @var ProduitRepository $repository */
         $repository = $this
             ->getDoctrine()
             ->getManager()
