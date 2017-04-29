@@ -1,5 +1,5 @@
 vms_vitrine:
-    resource: "@VMSVitrineBundle/resources/config/routing.yml"
+    resource: "@VMSVitrineBundle/Resources/config/routing.yml"
     prefix :    /
 
 fos_user:
