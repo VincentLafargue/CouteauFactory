@@ -28,9 +28,15 @@
                         {{ form_start(form, {'action': path('vms_vitrine')}) }}
                             {{ form_errors(form) }}
 
-                            {{ form_row(form.category) }}
-                            {{ form_row(form.min_price, { 'type':'number' }) }}
-                            {{ form_row(form.max_price, { 'type':'number' }) }}
+                            <div class="form-group">
+                                {{ form_row(form.category) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_row(form.min_price, { 'type':'number' }) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_row(form.max_price, { 'type':'number' }) }}
+                            </div>
 
                             {{ form_row(form.filter) }}
                         {{ form_end(form) }}                    </div><!-- /.col-lg-6 -->

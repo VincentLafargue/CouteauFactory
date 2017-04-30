@@ -27,6 +27,7 @@ class FilterProductForm extends AbstractType
     {
         $builder
             ->add('category', ChoiceType::class, [
+                'label' => 'Catégorie  ',
                 'expanded' => false,
                 'multiple' => false,
                 'required' => false,
