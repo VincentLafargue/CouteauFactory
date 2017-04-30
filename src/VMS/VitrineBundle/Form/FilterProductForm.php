@@ -27,7 +27,7 @@ class FilterProductForm extends AbstractType
     {
         $builder
             ->add('category', ChoiceType::class, [
-                'label' => 'Catégorie  ',
+                'label' => 'Catégorie',
                 'expanded' => false,
                 'multiple' => false,
                 'required' => false,
@@ -38,6 +38,7 @@ class FilterProductForm extends AbstractType
                 'attr' => ['class' => 'form-control']
             ])
             ->add('min_price', NumberType::class, [
+                'label' => 'Prix minimum',
                 'required' => false,
                 'scale'    => 2,
                 'attr' => [
@@ -47,6 +48,7 @@ class FilterProductForm extends AbstractType
                 ]
             ])
             ->add('max_price', NumberType::class, [
+                'label' => 'Prix maximum',
                 'required' => false,
                 'scale'    => 2,
                 'attr' => [
