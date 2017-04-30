@@ -34,13 +34,15 @@ class FilterProductForm extends AbstractType
                 'choice_label' => function (/** @var $categorie Categorie */ $categorie) {
                     return $categorie->getLibelle();
                 },
+                'attr' => ['class' => 'form-control']
             ])
             ->add('min_price', NumberType::class, [
                 'required' => false,
                 'scale'    => 2,
                 'attr' => [
                     'min' => 0,
-                    'step' => 0.01
+                    'step' => 0.01,
+                    'class' => 'form-control'
                 ]
             ])
             ->add('max_price', NumberType::class, [
@@ -48,7 +50,8 @@ class FilterProductForm extends AbstractType
                 'scale'    => 2,
                 'attr' => [
                     'min' => 0,
-                    'step' => 0.01
+                    'step' => 0.01,
+                    'class' => 'form-control'
                 ]
             ])
             ->add('filter', SubmitType::class, array('label' => 'Filtrer'));
