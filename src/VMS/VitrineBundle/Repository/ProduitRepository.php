@@ -56,33 +56,34 @@ class ProduitRepository extends \Doctrine\ORM\EntityRepository
 
     public function findFilters($categorie, $priceMin, $priceMax)
     {
-        $qb = $this->createQueryBuilder('p');
+        $qb = $this->createQueryBuilder('p')
+            ->innerJoin('p.categorie', 'c');
+        $where  = '';
+        $params = [];
 
-        //dump($priceMax, $priceMin);
-        if (is_float($priceMin) && is_float($priceMax)) {
-            $qb
-                ->where('p.prix BETWEEN :min AND :max')
-                ->setParameter('min', $priceMin)
-                ->setParameter('max', $priceMax);
-        } elseif (is_float($priceMin)){
-            $qb
-                ->where('p.prix > :priceMin')
-                ->setParameter('priceMin', $priceMin);
-        } elseif (is_float($priceMax)) {
-            $qb
-                ->where('p.prix > :priceMax')
-                ->setParameter('priceMax', $priceMax);
-
+        if ($priceMin > 0 && $priceMax > $priceMin) {
+            $where = 'p.prix BETWEEN :priceMin AND :priceMax';
+            $params['priceMin'] = $priceMin;
+            $params['priceMax'] = $priceMax;
+        } elseif ($priceMin > 0) {
+            $where = 'p.prix > :priceMin';
+            $params['priceMin'] = $priceMin;
+        } elseif ($priceMax > 0) {
+            $where = 'p.prix < :priceMax';
+            $params['priceMax'] = $priceMax;
+        }
+        if ($categorie instanceof Categorie) {
+            if (!empty($where)) {
+                $where .= ' AND ';
+            }
+            $where .= 'c.id = :categorie';
+            $params['categorie'] = $categorie->getId();
         }
 
-        // Normalement tu vérifies si catégorie est
-        // une instance d'Entity Category en utilisant ton repo et en faisant une request simple
-        // Du coup là c'est caca mais tant pis
-        if ($categorie != null) {
+        if (!empty($where)) {
             $qb
-                ->innerJoin('p.categorie', 'c')
-                ->where('c.id = :categorie')
-                ->setParameter('categorie', $categorie);
+                ->where($where)
+                ->setParameters($params);
         }
 
         return $qb->getQuery()->getResult();

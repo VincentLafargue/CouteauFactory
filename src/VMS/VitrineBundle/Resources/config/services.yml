@@ -2,3 +2,13 @@ services:
 #    vms_vitrine.example:
 #        class: VMS\VitrineBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+    categorie.repository:
+        class: Doctrine\ORM\EntityRepository
+        factory: ["@doctrine.orm.entity_manager", getRepository]
+        arguments:
+            - VMS\VitrineBundle\Entity\Categorie
+    filter.product.form:
+        class: VMS\VitrineBundle\Form\FilterProductForm
+        arguments: ['@categorie.repository']
+        tags:
+            - { name: form.type, alias: valueType }

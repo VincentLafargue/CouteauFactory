@@ -10,34 +10,25 @@ namespace VMS\VitrineBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use VMS\VitrineBundle\Form\FilterProductForm;
 use VMS\VitrineBundle\Repository\ProduitRepository;
 
 class  VitrineController extends Controller
 {
     public function indexAction(Request $request)
     {
-        //recupere toute les categories pour les afficher dans le menu deroulant des filtres de recherche
-        $categories = $this->getDoctrine()->getManager()->getRepository('VMSVitrineBundle:Categorie')->findAll();
+        /** @var ProduitRepository $productRepository */
+        $productRepository = $this->getDoctrine()->getManager()->getRepository('VMSVitrineBundle:Produit');
 
-        $repository = $this->getDoctrine()->getManager()->getRepository('VMSVitrineBundle:Produit');
+        $form = $this->createForm(FilterProductForm::class);
+        $form->handleRequest($request);
 
-        //on recupere les produits envoyés depuis la session
-        $products = $request->getSession()->get('products');
-
-        //si le paramètre products=tous est passé on affiche tout les produits(cas ou on arrive sur la vitrine depuis le bandeau de lien)
-        if($request->query->get('products') == "tous" )
-        {
-            $listProduits = $repository->findAll();
-        }
-        //si il y a des produits envoyés depuis la session et que la variable n'est pas vide(cas ou on utilise les filtres)
-        elseif(isset($products) && !empty($products))
-        {
-            $listProduits = $products;
-        }
-        //sinon on affiche tout les produits
-        else
-        {
-            $listProduits = $repository->findAll();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            // on recupere les produits recherchés avec la methode findfilters
+            $listProduits = $productRepository->findFilters($data['category'], $data['min_price'], $data['max_price']);
+        } else {
+            $listProduits = $productRepository->findAll();
         }
 
         /**
@@ -47,16 +38,15 @@ class  VitrineController extends Controller
         $paginator = $this->get('knp_paginator');
         $result = $paginator->paginate(
             $listProduits,
-            $request->query->getInt('page',1),
-            $request->query->getInt('limit',8)
+            $request->query->getInt('page', 1),
+            $request->query->getInt('limit', 8)
         );
 
         return $this->render('VMSVitrineBundle:Default:vitrine.html.twig',
             array(
                 //pour la vitrine
                 'listProduits' => $result,
-                //pour le menu deroulant des filtres
-                'listCategories' => $categories
+                'form' => $form->createView()
             ));
     }
 
@@ -101,21 +91,4 @@ class  VitrineController extends Controller
 
         return $this->redirect($this->generateUrl('vms_vitrine'));
     }
-
-    public function filtersAction(Request $request)
-    {
-        $categorie = $request->query->get('categorie');
-        $priceMin = $request->query->get('priceMin');
-        $priceMax = $request->query->get('priceMax');
-
-        // on recupere les produits recherchés avec la methode findfilters
-        $products = $this->getDoctrine()->getManager()->getRepository('VMSVitrineBundle:Produit')->findFilters($categorie, $priceMin, $priceMax);
-
-        //on envoie les produits a afficher dans la session
-        $request->getSession()->set('products', $products);
-
-        //on redirige vers la page d'afffichage dde la vitrine
-        return $this->redirect($this->generateUrl('vms_vitrine', ['products', $products]));
-    }
-
 }
