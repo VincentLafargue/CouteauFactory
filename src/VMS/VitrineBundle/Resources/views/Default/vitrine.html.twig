@@ -20,7 +20,7 @@
     </div>
     {% endblock %}
 
-
+    {% block vitrine %}
         <div class="container">
             {% block recherche %}
                 <div class="row" style="margin-bottom: 30px;margin-top: 20px;">
@@ -58,6 +58,13 @@
 
             {% block produits %}
             <div class="row">
+
+                {% for message in app.session.flashbag.get('error') %}
+                    <div class="alert alert-danger">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+
                 {% for produit in listProduits %}
                 <div class="col-md-3 col-sm-6">
                     <div class="single-shop-product">
@@ -87,5 +94,6 @@
             {% endblock %}
 
         </div>
+    {% endblock %}
 
 {% endblock %}

@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use VMS\VitrineBundle\Form\FilterProductForm;
 use VMS\VitrineBundle\Repository\ProduitRepository;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class  VitrineController extends Controller
 {
@@ -42,6 +43,10 @@ class  VitrineController extends Controller
             $request->query->getInt('limit', 8)
         );
 
+        //si on trouve aucun produit on affiche un message
+        if(empty($listProduits)){
+            $this->get('session')->getFlashBag()->add('error', 'Aucun article ne correspond à vos critères');
+        }
         return $this->render('VMSVitrineBundle:Default:vitrine.html.twig',
             array(
                 //pour la vitrine
@@ -52,17 +57,14 @@ class  VitrineController extends Controller
 
     public function vueAction($id)
     {
-        $repository = $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository('VMSVitrineBundle:Produit')
-        ;
+        /** @var ProduitRepository $produitRepository */
+        $produitRepository = $this->getDoctrine()->getManager()->getRepository('VMSVitrineBundle:Produit');
 
-        $produit = $repository->find($id);
+        $produit = $produitRepository->find($id);
         $categorieProduit = $produit->getCategorie();
 
-        $listProduitAll = $repository->findByDateLimit(4);
-        $listProduitSameCategorie = $repository->findByCategoryLimit($categorieProduit, 99, $id);
+        $listProduitAll = $produitRepository->findByDateLimit(4);
+        $listProduitSameCategorie = $produitRepository->findByCategoryLimit($categorieProduit, 99, $id);
         
 
         return $this->render('VMSVitrineBundle:Default:product.html.twig', array(
