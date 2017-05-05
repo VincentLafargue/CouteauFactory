@@ -24,14 +24,14 @@ class Produit
     /**
      * @var string
      *
-     * @ORM\Column(name="image_path", type="string", nullable=true)
+     * @ORM\Column(name="image_path", type="string", nullable=false)
      */
     private $image_path;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="prix", type="decimal", precision=7, scale=2, nullable=true)
+     * @ORM\Column(name="prix", type="decimal", precision=7, scale=2, nullable=false)
      */
     private $prix;
 
@@ -96,6 +96,10 @@ class Produit
      */
     private $categorie;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="VMS\VitrineBundle\Entity\Marque")
+     */
+    private $marque;
 
 
     /**
@@ -370,5 +374,29 @@ class Produit
     public function getCategorie()
     {
         return $this->categorie;
+    }
+
+    /**
+     * Set marque
+     *
+     * @param \VMS\VitrineBundle\Entity\Marque $marque
+     *
+     * @return Produit
+     */
+    public function setMarque(\VMS\VitrineBundle\Entity\Marque $marque = null)
+    {
+        $this->marque = $marque;
+
+        return $this;
+    }
+
+    /**
+     * Get marque
+     *
+     * @return \VMS\VitrineBundle\Entity\Marque
+     */
+    public function getMarque()
+    {
+        return $this->marque;
     }
 }

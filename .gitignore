@@ -15,3 +15,7 @@
 /vendor/
 /web/bundles/
 .idea/*
+/src/VMS/VitrineBundle/Entity/Catgorie.php~
+/src/VMS/VitrineBundle/Entity/User.php~
+/src/VMS/VitrineBundle/Entity/Produit.php~
+/src/VMS/VitrineBundle/Entity/Marque.php~

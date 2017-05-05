@@ -8,24 +8,29 @@
 namespace VMS\VitrineBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use VMS\VitrineBundle\Entity\Produit;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use VMS\VitrineBundle\Repository\MarqueRepository;
+use VMS\VitrineBundle\Repository\ProduitRepository;
 
 
 class HomeController extends Controller
 {
     public function indexAction()
     {
-        $repository = $this->getDoctrine()->getManager()->getRepository('VMSVitrineBundle:Produit');
+        /** @var ProduitRepository $produitRepository */
+        $produitRepository = $this->getDoctrine()->getManager()->getRepository('VMSVitrineBundle:Produit');
 
-        $listProduit5 = $repository->findBydateLimit(5);
+        $listProduit5 = $produitRepository->findByDateLimit(5);
+        $listProduit3 = $produitRepository->findByDateLimit(3);
 
-        $listProduit3 = $repository->findBydateLimit(3);
+        /** @var MarqueRepository $marqueRepository */
+        $marqueRepository = $this->getDoctrine()->getManager()->getRepository('VMSVitrineBundle:Marque');
+
+        $listMarques = $marqueRepository->findAll();
 
         return $this->render('VMSVitrineBundle:Default:index.html.twig', array(
             'listProduit' => $listProduit5,
-            'listProduit3' => $listProduit3
+            'listProduit3' => $listProduit3,
+            'listMarques' => $listMarques
         ));
     }   
     

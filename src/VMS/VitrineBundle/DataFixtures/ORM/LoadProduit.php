@@ -23,6 +23,7 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit1 ->setTauxReduc('0');
         $produit1->setImagePath('couteau_infini.jpg');
         $produit1->setCategorie($this->getReference('cran'));
+        $produit1->setMarque($this->getReference('fox_knives'));
         $manager->persist($produit1);
 
         $produit2 = new Produit();
@@ -37,6 +38,7 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit2 ->setTauxReduc('0');
         $produit2->setImagePath('couteau_cooked.jpg');
         $produit2->setCategorie($this->getReference('cran'));
+        $produit2->setMarque($this->getReference('fox_knives'));
         $manager->persist($produit2);
 
         $produit3 = new Produit();
@@ -51,6 +53,7 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit3 ->setTauxReduc('0');
         $produit3->setImagePath('couteau_rappeuse.jpg');
         $produit3->setCategorie($this->getReference('cran'));
+        $produit3->setMarque($this->getReference('fox_knives'));
         $manager->persist($produit3);
 
         $produit4 = new Produit();
@@ -65,6 +68,7 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit4 ->setTauxReduc('0');
         $produit4->setImagePath('couteau_hachoir.jpg');
         $produit4->setCategorie($this->getReference('autres'));
+        $produit4->setMarque($this->getReference('fox_knives'));
         $manager->persist($produit4);
 
         $produit5 = new Produit();
@@ -79,6 +83,7 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit5 ->setTauxReduc('0');
         $produit5->setImagePath('couteau_fgx.jpg');
         $produit5->setCategorie($this->getReference('karambit'));
+        $produit5->setMarque($this->getReference('fox_knives'));
         $manager->persist($produit5);
 
 
@@ -94,6 +99,7 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit6 ->setTauxReduc('0');
         $produit6->setImagePath('couteau_affuteur.jpg');
         $produit6->setCategorie($this->getReference('cran'));
+        $produit6->setMarque($this->getReference('black_legion'));
         $manager->persist($produit6);
 
         $produit7 = new Produit();
@@ -108,6 +114,7 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit7 ->setTauxReduc('0');
         $produit7->setImagePath('couteau_millitarypolice.jpg');
         $produit7->setCategorie($this->getReference('cran'));
+        $produit7->setMarque($this->getReference('black_legion'));
         $manager->persist($produit7);
 
         $produit8 = new Produit();
@@ -122,6 +129,7 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit8 ->setTauxReduc('0');
         $produit8->setImagePath('couteau_colombian.jpg');
         $produit8->setCategorie($this->getReference('autres'));
+        $produit8->setMarque($this->getReference('black_legion'));
         $manager->persist($produit8);
 
         $produit9 = new Produit();
@@ -136,6 +144,7 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit9 ->setTauxReduc('0');
         $produit9->setImagePath('couteau_rainbow.jpg');
         $produit9->setCategorie($this->getReference('cran'));
+        $produit9->setMarque($this->getReference('black_legion'));
         $manager->persist($produit9);
 
         $produit10= new Produit();
@@ -150,6 +159,7 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit10->setImagePath('couteau_tigersteel.jpg');
         $produit10->setTauxReduc('0');
         $produit10->setCategorie($this->getReference('karambit'));
+        $produit10->setMarque($this->getReference('black_legion'));
         $manager->persist($produit10);
 
         $produit11= new Produit();
@@ -164,6 +174,7 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit11->setTauxReduc('0');
         $produit11->setImagePath('couteau_lamedechue.jpg');
         $produit11->setCategorie($this->getReference('papillon'));
+        $produit11->setMarque($this->getReference('black_legion'));
         $manager->persist($produit11);
 
         $produit12= new Produit();
@@ -178,6 +189,7 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit12->setTauxReduc('0');
         $produit12->setImagePath('couteau_excalibur.jpg');
         $produit12->setCategorie($this->getReference('autres'));
+        $produit12->setMarque($this->getReference('cold_steel'));
         $manager->persist($produit12);
 
         $produit13 = new Produit();
@@ -192,6 +204,7 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit13->setTauxReduc('0');
         $produit13->setImagePath('couteau_papillon.jpg');
         $produit13->setCategorie($this->getReference('papillon'));
+        $produit13->setMarque($this->getReference('cold_steel'));
         $manager->persist($produit13);
 
         $produit14 = new Produit();
@@ -206,6 +219,7 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit14->setTauxReduc('0');
         $produit14->setImagePath('couteau_peur.jpg');
         $produit14->setCategorie($this->getReference('papillon'));
+        $produit14->setMarque($this->getReference('cold_steel'));
         $manager->persist($produit14);
 
         $produit15 = new Produit();
@@ -220,6 +234,7 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit15->setTauxReduc('0');
         $produit15->setImagePath('couteau_banane.jpg');
         $produit15->setCategorie($this->getReference('papillon'));
+        $produit15->setMarque($this->getReference('cold_steel'));
         $manager->persist($produit15);
 
         $produit16 = new Produit();
@@ -234,6 +249,7 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit16->setTauxReduc('0');
         $produit16->setImagePath('couteau_4.jpg');
         $produit16->setCategorie($this->getReference('cran'));
+        $produit16->setMarque($this->getReference('cold_steel'));
         $manager->persist($produit16);
 
         $produit17 = new Produit();
@@ -248,6 +264,7 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit17->setTauxReduc('0');
         $produit17->setImagePath('couteau_enormus.jpg');
         $produit17->setCategorie($this->getReference('papillon'));
+        $produit17->setMarque($this->getReference('benchmade'));
         $manager->persist($produit17);
 
         $produit18 = new Produit();
@@ -262,21 +279,23 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit18->setTauxReduc('0');
         $produit18->setImagePath('couteau_krimsonweb.jpg');
         $produit18->setCategorie($this->getReference('karambit'));
+        $produit18->setMarque($this->getReference('benchmade'));
         $manager->persist($produit18);
 
-        $produit18 = new Produit();
-        $produit18->setPrix('146.00');
-        $produit18->setStock(2);
-        $produit18->setLibelleProduit('Faded Red');
-        $produit18->setDescriptionProduit('Un Magnifique Karambit faded de couleur vives.');
-        $produit18->setTaille('14');
-        $produit18->setMateriauxLame('Fibre de verre multicolore');
-        $produit18->setPoids('49');
-        $produit18->setOrigine('Russie');
-        $produit18->setTauxReduc('0');
-        $produit18->setImagePath('couteau_faded.jpg');
-        $produit18->setCategorie($this->getReference('karambit'));
-        $manager->persist($produit18);
+        $produit19 = new Produit();
+        $produit19->setPrix('146.00');
+        $produit19->setStock(2);
+        $produit19->setLibelleProduit('Faded Red');
+        $produit19->setDescriptionProduit('Un Magnifique Karambit faded de couleur vives.');
+        $produit19->setTaille('14');
+        $produit19->setMateriauxLame('Fibre de verre multicolore');
+        $produit19->setPoids('49');
+        $produit19->setOrigine('Russie');
+        $produit19->setTauxReduc('0');
+        $produit19->setImagePath('couteau_faded.jpg');
+        $produit19->setCategorie($this->getReference('karambit'));
+        $produit19->setMarque($this->getReference('benchmade'));
+        $manager->persist($produit19);
 
 
         $manager->flush();
@@ -284,7 +303,7 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
 
     public function getOrder()
     {
-        return 2;
+        return 3;
     }
     
 }

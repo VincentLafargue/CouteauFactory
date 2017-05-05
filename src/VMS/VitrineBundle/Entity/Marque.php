@@ -24,10 +24,23 @@ class Marque
     /**
      * @var string
      *
-     * @ORM\Column(name="libelle_marque", type="string", length=255, nullable=true)
+     * @ORM\Column(name="libelle_marque", type="string", length=255, nullable=false)
      */
-    private $libelleMarque;
+    private $libelle;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image_path", type="string", nullable=true)
+     */
+    private $imagePath;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image_alt", type="string", nullable=true)
+     */
+    private $imageAlt;
 
     /**
      * Get id
@@ -40,26 +53,74 @@ class Marque
     }
 
     /**
-     * Set libelleMarque
+     * Set imagePath
      *
-     * @param string $libelleMarque
+     * @param string $imagePath
      *
      * @return Marque
      */
-    public function setLibelleMarque($libelleMarque)
+    public function setImagePath($imagePath)
     {
-        $this->libelleMarque = $libelleMarque;
+        $this->imagePath = $imagePath;
 
         return $this;
     }
 
     /**
-     * Get libelleMarque
+     * Get imagePath
      *
      * @return string
      */
-    public function getLibelleMarque()
+    public function getImagePath()
     {
-        return $this->libelleMarque;
+        return $this->imagePath;
+    }
+
+    /**
+     * Set libelle
+     *
+     * @param string $libelle
+     *
+     * @return Marque
+     */
+    public function setLibelle($libelle)
+    {
+        $this->libelle = $libelle;
+
+        return $this;
+    }
+
+    /**
+     * Get libelle
+     *
+     * @return string
+     */
+    public function getLibelle()
+    {
+        return $this->libelle;
+    }
+
+    /**
+     * Set imageAlt
+     *
+     * @param string $imageAlt
+     *
+     * @return Marque
+     */
+    public function setImageAlt($imageAlt)
+    {
+        $this->imageAlt = $imageAlt;
+
+        return $this;
+    }
+
+    /**
+     * Get imageAlt
+     *
+     * @return string
+     */
+    public function getImageAlt()
+    {
+        return $this->imageAlt;
     }
 }
