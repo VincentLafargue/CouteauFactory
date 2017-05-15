@@ -64,9 +64,7 @@ class Produit
     private $taille;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="materiaux_lame", type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="VMS\VitrineBundle\Entity\Materiau")
      */
     private $materiauxLame;
 
@@ -78,9 +76,7 @@ class Produit
     private $poids;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="origine", type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="VMS\VitrineBundle\Entity\Origine")
      */
     private $origine;
 
@@ -255,30 +251,7 @@ class Produit
     {
         return $this->taille;
     }
-
-    /**
-     * Set materiauxLame
-     *
-     * @param string $materiauxLame
-     *
-     * @return Produit
-     */
-    public function setMateriauxLame($materiauxLame)
-    {
-        $this->materiauxLame = $materiauxLame;
-
-        return $this;
-    }
-
-    /**
-     * Get materiauxLame
-     *
-     * @return string
-     */
-    public function getMateriauxLame()
-    {
-        return $this->materiauxLame;
-    }
+    
 
     /**
      * Set poids
@@ -302,30 +275,6 @@ class Produit
     public function getPoids()
     {
         return $this->poids;
-    }
-
-    /**
-     * Set origine
-     *
-     * @param string $origine
-     *
-     * @return Produit
-     */
-    public function setOrigine($origine)
-    {
-        $this->origine = $origine;
-
-        return $this;
-    }
-
-    /**
-     * Get origine
-     *
-     * @return string
-     */
-    public function getOrigine()
-    {
-        return $this->origine;
     }
 
     /**
@@ -398,5 +347,53 @@ class Produit
     public function getMarque()
     {
         return $this->marque;
+    }
+
+    /**
+     * Set materiauxLame
+     *
+     * @param \VMS\VitrineBundle\Entity\Materiau $materiauxLame
+     *
+     * @return Produit
+     */
+    public function setMateriauxLame(\VMS\VitrineBundle\Entity\Materiau $materiauxLame = null)
+    {
+        $this->materiauxLame = $materiauxLame;
+
+        return $this;
+    }
+
+    /**
+     * Get materiauxLame
+     *
+     * @return \VMS\VitrineBundle\Entity\Materiau
+     */
+    public function getMateriauxLame()
+    {
+        return $this->materiauxLame;
+    }
+
+    /**
+     * Set origine
+     *
+     * @param \VMS\VitrineBundle\Entity\Origine $origine
+     *
+     * @return Produit
+     */
+    public function setOrigine(\VMS\VitrineBundle\Entity\Origine $origine = null)
+    {
+        $this->origine = $origine;
+
+        return $this;
+    }
+
+    /**
+     * Get origine
+     *
+     * @return \VMS\VitrineBundle\Entity\Origine
+     */
+    public function getOrigine()
+    {
+        return $this->origine;
     }
 }
