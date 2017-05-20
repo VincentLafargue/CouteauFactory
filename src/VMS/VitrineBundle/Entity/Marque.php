@@ -57,7 +57,7 @@ class Marque
      *
      * @param string $imagePath
      *
-     * @return Marque
+     * @return string
      */
     public function setImagePath($imagePath)
     {
@@ -81,7 +81,7 @@ class Marque
      *
      * @param string $libelle
      *
-     * @return Marque
+     * @return string
      */
     public function setLibelle($libelle)
     {
@@ -105,7 +105,7 @@ class Marque
      *
      * @param string $imageAlt
      *
-     * @return Marque
+     * @return string
      */
     public function setImageAlt($imageAlt)
     {

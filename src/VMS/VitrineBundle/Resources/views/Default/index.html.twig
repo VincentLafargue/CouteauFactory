@@ -137,13 +137,13 @@
                                 {% for produit in listProduit %}
                                 <div class="single-product">
                                 <div class="product-f-image">
-                                    <img src="{{ asset('img/produits/' ~ produit.getImagePath() ) }}" alt="" style="height: 160px">
+                                    <img src="{{ asset('img/produits/' ~ produit.imagePath ) }}" alt="" style="height: 160px">
                                     <div class="product-hover">
-                                        <a  style="font-size: 1em;" href="{{ path('vms_cart_add', {'id': produit.getId()}) }}" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Ajouter panier</a>
-                                        <a href="{{ path('vms_vitrine_vue', {'id': produit.getId()}) }}" class="view-details-link"><i class="fa fa-link"></i> Détails</a>
+                                        <a  style="font-size: 1em;" href="{{ path('vms_cart_add', {'id': produit.id }) }}" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Ajouter panier</a>
+                                        <a href="{{ path('vms_vitrine_vue', {'id': produit.id }) }}" class="view-details-link"><i class="fa fa-link"></i> Détails</a>
                                     </div>
                                 </div>
-                                <h2><a href="{{ path('vms_vitrine_vue', {'id': produit.getId()}) }}">{{ produit.getLibelleProduit() }}</a></h2>
+                                <h2><a href="{{ path('vms_vitrine_vue', {'id': produit.id }) }}">{{ produit.libelle }}</a></h2>
                                 <div class="product-carousel-price">
                                     <ins>{{ produit.getPrix() }}€</ins>
                                 </div>
@@ -299,7 +299,7 @@
                         {% for produit in listProduit3 %}
                         <div class="single-wid-product">
                             <a href="{{ path('vms_vitrine_vue', {'id': produit.getId()}) }}"><img src="{{ asset('img/produits/' ~ produit.getImagePath()) }}" alt="" class="product-thumb"></a>
-                            <h2><a href="{{ path('vms_vitrine_vue', {'id': produit.getId()}) }}">{{ produit.getLibelleProduit }}</a></h2>
+                            <h2><a href="{{ path('vms_vitrine_vue', {'id': produit.id}) }}">{{ produit.libelle }}</a></h2>
                             <div class="product-wid-rating">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -308,7 +308,7 @@
                                 <i class="fa fa-star"></i>
                             </div>
                             <div class="product-wid-price">
-                                <ins>{{ produit.getPrix() }}€</ins>
+                                <ins>{{ produit.prix }}€</ins>
                             </div>
                         </div>
                         {% endfor %}

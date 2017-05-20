@@ -69,15 +69,15 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="single-shop-product">
                         <div class="product-upper">
-                            <img src="{{ asset('img/produits/' ~ produit.getImagePath()) }}" alt="image_couteau" style="height: 120px;">
+                            <img src="{{ asset('img/produits/' ~ produit.imagePath) }}" alt="image_couteau" style="height: 120px;">
                         </div>
-                        <h2><a href="{{ path('vms_vitrine_vue', {'id': produit.getId()}) }}">{{ produit.getLibelleProduit() }}</a></h2>
+                        <h2><a href="{{ path('vms_vitrine_vue', {'id': produit.id}) }}">{{ produit.libelle }}</a></h2>
                         <div class="product-carousel-price">
-                            <ins>{{ produit.getPrix() }}€</ins>
+                            <ins>{{ produit.prix }}€</ins>
                         </div>
 
                         <div class="product-option-shop">
-                            <a class="add_to_cart_button addPanier" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="{{ path('vms_cart_add', {'id': produit.getId()}) }}">Ajouter au panier</a>
+                            <a class="add_to_cart_button addPanier" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="{{ path('vms_cart_add', {'id': produit.id }) }}">Ajouter au panier</a>
                         </div>
                     </div>
                 </div>

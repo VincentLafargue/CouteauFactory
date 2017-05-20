@@ -24,10 +24,13 @@ class  VitrineController extends Controller
         $form = $this->createForm(FilterProductForm::class);
         $form->handleRequest($request);
 
+        $paramFilters = [];
+
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
             // on recupere les produits recherchés avec la methode findfilters
             $listProduits = $productRepository->findFilters($data['category'], $data['min_price'], $data['max_price']);
+            $paramFilters = $data;
         } else {
             $listProduits = $productRepository->findAll();
         }
@@ -40,7 +43,8 @@ class  VitrineController extends Controller
         $result = $paginator->paginate(
             $listProduits,
             $request->query->getInt('page', 1),
-            $request->query->getInt('limit', 8)
+            $request->query->getInt('limit', 8),
+            $paramFilters
         );
 
         //si on trouve aucun produit on affiche un message

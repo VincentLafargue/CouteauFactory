@@ -47,14 +47,14 @@ class Produit
      *
      * @ORM\Column(name="libelle_produit", type="string", length=255, nullable=false)
      */
-    private $libelleProduit;
+    private $libelle;
 
     /**
      * @var string
      *
      * @ORM\Column(name="description_produit", type="string", length=255, nullable=true)
      */
-    private $descriptionProduit;
+    private $description;
 
     /**
      * @var string
@@ -66,7 +66,7 @@ class Produit
     /**
      * @ORM\ManyToOne(targetEntity="VMS\VitrineBundle\Entity\Materiau")
      */
-    private $materiauxLame;
+    private $materiau;
 
     /**
      * @var string
@@ -181,51 +181,51 @@ class Produit
     }
 
     /**
-     * Set libelleProduit
+     * Set libelle
      *
-     * @param string $libelleProduit
+     * @param string $libelle
      *
      * @return Produit
      */
-    public function setLibelleProduit($libelleProduit)
+    public function setLibelle($libelle)
     {
-        $this->libelleProduit = $libelleProduit;
+        $this->libelle = $libelle;
 
         return $this;
     }
 
     /**
-     * Get libelleProduit
+     * Get libelle
      *
      * @return string
      */
-    public function getLibelleProduit()
+    public function getLibelle()
     {
-        return $this->libelleProduit;
+        return $this->libelle;
     }
 
     /**
-     * Set descriptionProduit
+     * Set description
      *
-     * @param string $descriptionProduit
+     * @param string $description
      *
      * @return Produit
      */
-    public function setDescriptionProduit($descriptionProduit)
+    public function setDescription($description)
     {
-        $this->descriptionProduit = $descriptionProduit;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Get descriptionProduit
+     * Get description
      *
      * @return string
      */
-    public function getDescriptionProduit()
+    public function getDescription()
     {
-        return $this->descriptionProduit;
+        return $this->description;
     }
 
     /**
@@ -251,7 +251,6 @@ class Produit
     {
         return $this->taille;
     }
-    
 
     /**
      * Set poids
@@ -350,27 +349,27 @@ class Produit
     }
 
     /**
-     * Set materiauxLame
+     * Set materiau
      *
-     * @param \VMS\VitrineBundle\Entity\Materiau $materiauxLame
+     * @param \VMS\VitrineBundle\Entity\Materiau $materiau
      *
      * @return Produit
      */
-    public function setMateriauxLame(\VMS\VitrineBundle\Entity\Materiau $materiauxLame = null)
+    public function setMateriau(\VMS\VitrineBundle\Entity\Materiau $materiau = null)
     {
-        $this->materiauxLame = $materiauxLame;
+        $this->materiau = $materiau;
 
         return $this;
     }
 
     /**
-     * Get materiauxLame
+     * Get materiau
      *
      * @return \VMS\VitrineBundle\Entity\Materiau
      */
-    public function getMateriauxLame()
+    public function getMateriau()
     {
-        return $this->materiauxLame;
+        return $this->materiau;
     }
 
     /**
