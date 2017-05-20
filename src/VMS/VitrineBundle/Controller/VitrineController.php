@@ -28,12 +28,14 @@ class  VitrineController extends Controller
         $paramFilters['min_price'] = $request->get('min_price');
         $paramFilters['max_price'] = $request->get('max_price');
         $paramFilters['category']  = $request->get('category');
+        $paramFilters['text']      = $request->get('text');
 
             //array_filter vide les case "vide" du tableau avant de les envoyer a empty
             $listProduits = $productRepository->findFilters(
                 $paramFilters['category'],
                 $paramFilters['min_price'],
-                $paramFilters['max_price']
+                $paramFilters['max_price'],
+                $paramFilters['text']
             );
         if (!empty(array_filter($paramFilters))) {
         } else {
@@ -94,7 +96,7 @@ class  VitrineController extends Controller
             "listProduitAll" => $listProduitAll
         ));
     }
-   
+
     public function searchAction(Request $request)
     {
         /** @var ProduitRepository $repository */

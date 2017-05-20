@@ -44,17 +44,7 @@ class ProduitRepository extends \Doctrine\ORM\EntityRepository
         return $dql->getQuery()->getResult();
     }
 
-    public function findLikeText($text)
-    {
-        $qb = $this->createQueryBuilder('p');
-
-        $qb->where('p.libelleProduit LIKE :text')
-            ->setParameter('text', '%'.$text.'%');
-
-        return $qb->getQuery()->getResult();
-    }
-
-    public function findFilters($categorie, $priceMin, $priceMax)
+    public function findFilters($categorie, $priceMin, $priceMax, $text)
     {
         $qb = $this->createQueryBuilder('p')
             ->innerJoin('p.categorie', 'c');
@@ -79,7 +69,10 @@ class ProduitRepository extends \Doctrine\ORM\EntityRepository
             $where .= 'c.id = :categorie';
             $params['categorie'] = $categorie->getId();
         }
-
+        if ($text != '') {
+            $where .= 'p.libelle LIKE :tex';
+            $params['text'] = '%'.$text.'%';
+        }
         if (!empty($where)) {
             $qb
                 ->where($where)

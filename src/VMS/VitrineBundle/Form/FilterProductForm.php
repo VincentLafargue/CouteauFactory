@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use VMS\VitrineBundle\Entity\Categorie;
 use VMS\VitrineBundle\Repository\CategorieRepository;
@@ -55,6 +56,14 @@ class FilterProductForm extends AbstractType
                     'min' => 0,
                     'step' => 0.01,
                     'class' => 'form-control'
+                ]
+            ])
+            ->add('text', TextType::class, [
+                'label' => 'Rechercher par texte',
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'Rechercher...'
                 ]
             ])
             ->add('filter', SubmitType::class, array('label' => 'Filtrer'));
