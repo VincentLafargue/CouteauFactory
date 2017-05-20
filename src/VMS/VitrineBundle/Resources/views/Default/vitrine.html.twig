@@ -24,7 +24,7 @@
         <div class="container">
             {% block recherche %}
                 <div class="row" style="margin-bottom: 30px;margin-top: 20px;">
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         {{ form_start(form, {'action': path('vms_vitrine_filter')}) }}
                             {{ form_errors(form) }}
 
@@ -37,22 +37,13 @@
                             <div class="form-group">
                                 {{ form_row(form.max_price, { 'type':'number', 'value':app.request.get('max_price') }) }}
                             </div>
+                            <div class="form-group">
+                                {{ form_row(form.text, { 'type':'text', 'value':app.request.get('text') }) }}
+                            </div>
 
                             {{ form_row(form.filter) }}
-                        {{ form_end(form) }}                    </div><!-- /.col-lg-6 -->
-
-                    <div class="col-lg-offset-2 col-lg-4">
-                        <div class="input-group">
-
-                            <form method="get" action="{{ path('vms_vitrine_search') }}" class="navbar-form navbar-left" role="search">
-                                <div class="form-group">
-                                    <input type="text" name="text" class="form-control" placeholder="Rechercher...">
-                                </div>
-                                <button type="submit" class="btn btn-default">Go!</button>
-                            </form>
-
-                        </div><!-- /input-group -->
-                    </div><!-- /.col-lg-6 -->
+                        {{ form_end(form) }}
+                    </div>
                 </div><!-- /.row -->
             {% endblock %}
 

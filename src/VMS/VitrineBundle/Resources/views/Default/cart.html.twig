@@ -62,39 +62,39 @@
 
                         <tr class="cart_item">
                             <td class="product-remove">
-                                <a style="font-size: 20px;" title="Supprimer ce produit" class="remove" href="{{ path('vms_cart_remove', {'id': product.getId() }) }}">X</a>
+                                <a style="font-size: 20px;" title="Supprimer ce produit" class="remove" href="{{ path('vms_cart_remove', {'id': product.id }) }}">X</a>
                             </td>
 
                             <td class="product-thumbnail">
-                                <a href="{{ path('vms_vitrine_vue', {'id': product.getId()}) }}"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="{{ asset('img/produits/' ~ product.getImagePath()) }}"></a>
+                                <a href="{{ path('vms_vitrine_vue', {'id': product.id }) }}"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="{{ asset('img/produits/' ~ product.imagePath) }}"></a>
                             </td>
 
                             <td class="product-name">
-                                <a href="{{ path('vms_vitrine_vue', {'id': product.getId()}) }}">{{ product.getLibelleProduit }}</a>
+                                <a href="{{ path('vms_vitrine_vue', {'id': product.id}) }}">{{ product.libelle }}</a>
                             </td>
 
                             <td class="product-price">
-                                <span class="amount">{{ product.getPrix() }}€</span>
+                                <span class="amount">{{ product.prix }}€</span>
                             </td>
 
 
                                 <td class="product-quantity">{#On a deux formulaires identiques sinon ça ne marche pas / on sais pas pourquoi#}
-                                    <form action="{{ path('vms_cart_change', {'id': product.getId()}) }}" class="cart" method="get">
+                                    <form action="{{ path('vms_cart_change', {'id': product.id}) }}" class="cart" method="get">
                                     </form>
-                                    <form action="{{ path('vms_cart_change', {'id': product.getId()}) }}" class="cart" method="get">
+                                    <form action="{{ path('vms_cart_change', {'id': product.id}) }}" class="cart" method="get">
                                         <div class="quantity">
-                                            <input type="number" size="4" class="input-text qty text" title="Qty" value="{{ cart[product.getId()] }}" name="quantity" min="1" max="{{ product.getStock() }}" step="1">
+                                            <input type="number" size="4" class="input-text qty text" title="Qty" value="{{ cart[product.id] }}" name="quantity" min="1" max="{{ product.stock }}" step="1">
                                         </div>
                                         <button style="margin-top: 2px;" class="add_to_cart_button" type="submit">Mettre a jour</button>
                                     </form>
                                 </td>
 
                             <td class="product-subtotal">
-                                <span class="amount">{{ product.getPrix() * cart[product.getId()] }}€</span>
+                                <span class="amount">{{ product.prix * cart[product.id] }}€</span>
                             </td>
                         </tr>
 
-                        {% set totalHT = totalHT + (product.getPrix() * cart[product.getId()]) %}
+                        {% set totalHT = totalHT + (product.prix * cart[product.id]) %}
 
                         {% endfor %}
                         <!-- Fin des produits -->
@@ -106,10 +106,10 @@
                         <!--Prix ht-->
                         {% for product in products %}
                             {% set i = i+1 %}
-                            <input type='hidden' value='{{ product.getPrix()}}' name="{{'amount_'~ i}}" />
+                            <input type='hidden' value='{{ product.prix}}' name="{{'amount_'~ i}}" />
 
                             <!--Taxe (tva) Mais pas besoin si on le met dans total a payer-->
-                            <input name="{{ 'tax_'~ i }}" type="hidden" value="{{ product.getPrix() * 1.15  - product.getPrix() }}" />
+                            <input name="{{ 'tax_'~ i }}" type="hidden" value="{{ product.prix * 1.15  - product.prix }}" />
                         {% endfor %}
                         <!--Type de monnaie-->
                         <input name="currency_code" type="hidden" value="EUR" />
@@ -132,8 +132,8 @@
                         {% set t = 0%}
                         {% for product in products %}
                             {% set t = t+1 %}
-                            <input name="{{'item_name_' ~ t }}" type="hidden" value="{{ product.getLibelleProduit }}" />
-                            {% set number = cart[product.getId()] %}
+                            <input name="{{'item_name_' ~ t }}" type="hidden" value="{{ product.libelle }}" />
+                            {% set number = cart[product.id] %}
 
                             <input name="{{'quantity_' ~ t }}" type="hidden" value="{{ number }}" />
                         {% endfor %}

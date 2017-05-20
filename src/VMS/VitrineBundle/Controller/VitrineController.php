@@ -13,7 +13,6 @@ use Symfony\Component\HttpFoundation\Request;
 use VMS\VitrineBundle\Form\FilterProductForm;
 use VMS\VitrineBundle\Repository\CategorieRepository;
 use VMS\VitrineBundle\Repository\ProduitRepository;
-use Symfony\Component\HttpFoundation\Session\Session;
 
 class  VitrineController extends Controller
 {
@@ -24,18 +23,22 @@ class  VitrineController extends Controller
 
         $form = $this->createForm(FilterProductForm::class);
 
+        //on récupère les paramètres envoyés du formulaire de filtres
         $paramFilters = [];
         $paramFilters['min_price'] = $request->get('min_price');
         $paramFilters['max_price'] = $request->get('max_price');
         $paramFilters['category']  = $request->get('category');
+        $paramFilters['text']      = $request->get('text');
 
         if (!empty(array_filter($paramFilters))) {
             /** @var CategorieRepository $categoryRepository */
             $categoryRepository = $this->getDoctrine()->getManager()->getRepository('VMSVitrineBundle:Categorie');
+            //array_filter vide les case "vide" du tableau avant de les envoyer a empty
             $listProduits = $productRepository->findFilters(
                 $categoryRepository->findOneBy(['id' => $paramFilters['category']]),
                 $paramFilters['min_price'],
-                $paramFilters['max_price']
+                $paramFilters['max_price'],
+                $paramFilters['text']
             );
         } else {
             $listProduits = $productRepository->findAll();
@@ -96,7 +99,7 @@ class  VitrineController extends Controller
             "listProduitAll" => $listProduitAll
         ));
     }
-   
+
     public function searchAction(Request $request)
     {
         /** @var ProduitRepository $repository */
