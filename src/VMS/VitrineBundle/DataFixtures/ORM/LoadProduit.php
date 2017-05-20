@@ -14,10 +14,10 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit1 = new Produit();
         $produit1 ->setPrix('378.00');
         $produit1 ->setStock(15);
-        $produit1 ->setLibelleProduit('Lame d\'Infini');
-        $produit1 ->setDescriptionProduit('Cette lame émane une lueur jaune.');
+        $produit1 ->setLibelle('Lame d\'Infini');
+        $produit1 ->setDescription('Cette lame émane une lueur jaune.');
         $produit1 ->setTaille('24');
-        $produit1 ->setMateriauxLame($this->getReference('Inox'));
+        $produit1 ->setMateriau($this->getReference('Inox'));
         $produit1 ->setPoids('154');
         $produit1 ->setOrigine($this->getReference('Chine'));
         $produit1 ->setTauxReduc('0');
@@ -29,10 +29,10 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit2 = new Produit();
         $produit2 ->setPrix('187.00');
         $produit2 ->setStock(11);
-        $produit2 ->setLibelleProduit('Cooked');
-        $produit2 ->setDescriptionProduit('Couteau parfait pour la cuisine !');
+        $produit2 ->setLibelle('Cooked');
+        $produit2 ->setDescription('Couteau parfait pour la cuisine !');
         $produit2 ->setTaille('26');
-        $produit2 ->setMateriauxLame($this->getReference('Inox'));
+        $produit2 ->setMateriau($this->getReference('Inox'));
         $produit2 ->setPoids('78');
         $produit2 ->setOrigine($this->getReference('France'));
         $produit2 ->setTauxReduc('0');
@@ -44,10 +44,10 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit3 = new Produit();
         $produit3 ->setPrix('74.00');
         $produit3 ->setStock(52);
-        $produit3 ->setLibelleProduit('Rappeuse');
-        $produit3 ->setDescriptionProduit('Ce couteau découppe extrêmement bien tout ce qu\'il touche.');
+        $produit3 ->setLibelle('Rappeuse');
+        $produit3 ->setDescription('Ce couteau découppe extrêmement bien tout ce qu\'il touche.');
         $produit3 ->setTaille('11');
-        $produit3 ->setMateriauxLame($this->getReference('Inox'));
+        $produit3 ->setMateriau($this->getReference('Inox'));
         $produit3 ->setPoids('19');
         $produit3 ->setOrigine($this->getReference('Chine'));
         $produit3 ->setTauxReduc('0');
@@ -59,10 +59,10 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit4 = new Produit();
         $produit4 ->setPrix('130.00');
         $produit4 ->setStock(7);
-        $produit4 ->setLibelleProduit('Hachoir');
-        $produit4 ->setDescriptionProduit('Parfait pour découper le poisson !');
+        $produit4 ->setLibelle('Hachoir');
+        $produit4 ->setDescription('Parfait pour découper le poisson !');
         $produit4 ->setTaille('30');
-        $produit4 ->setMateriauxLame($this->getReference('Fer'));
+        $produit4 ->setMateriau($this->getReference('Fer'));
         $produit4 ->setPoids('450');
         $produit4 ->setOrigine($this->getReference('France'));
         $produit4 ->setTauxReduc('0');
@@ -74,10 +74,10 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit5 = new Produit();
         $produit5 ->setPrix('139.00');
         $produit5 ->setStock(16);
-        $produit5 ->setLibelleProduit('FGX');
-        $produit5 ->setDescriptionProduit('Parfait pour découper les SISR !');
+        $produit5 ->setLibelle('FGX');
+        $produit5 ->setDescription('Parfait pour découper les SISR !');
         $produit5 ->setTaille('17');
-        $produit5 ->setMateriauxLame($this->getReference('Fibre de verre'));
+        $produit5 ->setMateriau($this->getReference('Fibre de verre'));
         $produit5 ->setPoids('97');
         $produit5 ->setOrigine($this->getReference('France'));
         $produit5 ->setTauxReduc('0');
@@ -88,11 +88,11 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
 
 
         $produit6 = new Produit();
-        $produit6 ->setLibelleProduit('Affuteur');
+        $produit6 ->setLibelle('Affuteur');
         $produit6 ->setPrix('25.00');
         $produit6 ->setOrigine($this->getReference('Brésil'));
-        $produit6 ->setDescriptionProduit('Utile dans toutes les situations.');
-        $produit6 ->setMateriauxLame($this->getReference('Inox'));
+        $produit6 ->setDescription('Utile dans toutes les situations.');
+        $produit6 ->setMateriau($this->getReference('Inox'));
         $produit6 ->setPoids('45');
         $produit6 ->setStock(6);
         $produit6 ->setTaille('12');
@@ -103,11 +103,11 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($produit6);
 
         $produit7 = new Produit();
-        $produit7 ->setLibelleProduit('Military Police');
+        $produit7 ->setLibelle('Military Police');
         $produit7 ->setPrix('63.00');
         $produit7 ->setOrigine($this->getReference('Etats-Unis'));
-        $produit7 ->setDescriptionProduit('Véritable couteau de la police américaine.');
-        $produit7 ->setMateriauxLame($this->getReference('Acier'));
+        $produit7 ->setDescription('Véritable couteau de la police américaine.');
+        $produit7 ->setMateriau($this->getReference('Acier'));
         $produit7 ->setPoids('59');
         $produit7 ->setStock(60);
         $produit7 ->setTaille('12');
@@ -118,11 +118,11 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($produit7);
 
         $produit8 = new Produit();
-        $produit8 ->setLibelleProduit('Colombian Jungle Sawback');
+        $produit8 ->setLibelle('Colombian Jungle Sawback');
         $produit8 ->setPrix('63.00');
         $produit8 ->setOrigine($this->getReference('Brésil'));
-        $produit8 ->setDescriptionProduit('Machette de survie');
-        $produit8 ->setMateriauxLame($this->getReference('Acier'));
+        $produit8 ->setDescription('Machette de survie');
+        $produit8 ->setMateriau($this->getReference('Acier'));
         $produit8 ->setPoids('254');
         $produit8 ->setStock(13);
         $produit8 ->setTaille('34');
@@ -133,11 +133,11 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($produit8);
 
         $produit9 = new Produit();
-        $produit9 ->setLibelleProduit('Rainbow');
+        $produit9 ->setLibelle('Rainbow');
         $produit9 ->setPrix('63.00');
         $produit9 ->setOrigine($this->getReference('Etats-Unis'));
-        $produit9 ->setDescriptionProduit('Reprodution du populaire couteau russe de 1996.');
-        $produit9 ->setMateriauxLame($this->getReference('Acier'));
+        $produit9 ->setDescription('Reprodution du populaire couteau russe de 1996.');
+        $produit9 ->setMateriau($this->getReference('Acier'));
         $produit9 ->setPoids('47');
         $produit9 ->setStock(13);
         $produit9 ->setTaille('16');
@@ -148,11 +148,11 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($produit9);
 
         $produit10= new Produit();
-        $produit10->setLibelleProduit('Tiger Steel');
+        $produit10->setLibelle('Tiger Steel');
         $produit10->setPrix('129.00');
         $produit10->setOrigine($this->getReference('France'));
-        $produit10->setDescriptionProduit('Parfait pour ce débarrasser du chat en toute discrétion !');
-        $produit10->setMateriauxLame($this->getReference('Acier'));
+        $produit10->setDescription('Parfait pour ce débarrasser du chat en toute discrétion !');
+        $produit10->setMateriau($this->getReference('Acier'));
         $produit10->setPoids('64');
         $produit10->setStock(10);
         $produit10->setTaille('13');
@@ -163,11 +163,11 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($produit10);
 
         $produit11= new Produit();
-        $produit11->setLibelleProduit('Lame dechue');
+        $produit11->setLibelle('Lame dechue');
         $produit11->setPrix('49.00');
         $produit11->setOrigine($this->getReference('France'));
-        $produit11->setDescriptionProduit('Parfait pour voler des vies.');
-        $produit11->setMateriauxLame($this->getReference('Acier'));
+        $produit11->setDescription('Parfait pour voler des vies.');
+        $produit11->setMateriau($this->getReference('Acier'));
         $produit11->setPoids('19');
         $produit11->setStock(10);
         $produit11->setTaille('27');
@@ -178,11 +178,11 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($produit11);
 
         $produit12= new Produit();
-        $produit12->setLibelleProduit('Excalibur');
+        $produit12->setLibelle('Excalibur');
         $produit12->setPrix('547.00');
         $produit12->setOrigine($this->getReference('France'));
-        $produit12->setDescriptionProduit('La lame légendaire.');
-        $produit12->setMateriauxLame($this->getReference('Acier'));
+        $produit12->setDescription('La lame légendaire.');
+        $produit12->setMateriau($this->getReference('Acier'));
         $produit12->setPoids('345');
         $produit12->setStock(10);
         $produit12->setTaille('50');
@@ -195,10 +195,10 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit13 = new Produit();
         $produit13->setPrix('25.00');
         $produit13->setStock(365);
-        $produit13->setLibelleProduit('Peroquet');
-        $produit13->setDescriptionProduit('Multiples couleurs scintillantes.');
+        $produit13->setLibelle('Peroquet');
+        $produit13->setDescription('Multiples couleurs scintillantes.');
         $produit13->setTaille('24');
-        $produit13->setMateriauxLame($this->getReference('Fer'));
+        $produit13->setMateriau($this->getReference('Fer'));
         $produit13->setPoids('52');
         $produit13->setOrigine($this->getReference('Brésil'));
         $produit13->setTauxReduc('0');
@@ -210,10 +210,10 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit14 = new Produit();
         $produit14->setPrix('238.00');
         $produit14->setStock(15);
-        $produit14->setLibelleProduit('L\'Oprime');
-        $produit14->setDescriptionProduit('Ce couteau déborde de d\'oppression.');
+        $produit14->setLibelle('L\'Oprime');
+        $produit14->setDescription('Ce couteau déborde de d\'oppression.');
         $produit14->setTaille('17');
-        $produit14->setMateriauxLame($this->getReference('Fibre de verre'));
+        $produit14->setMateriau($this->getReference('Fibre de verre'));
         $produit14->setPoids('50');
         $produit14->setOrigine($this->getReference('France'));
         $produit14->setTauxReduc('0');
@@ -225,10 +225,10 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit15 = new Produit();
         $produit15->setPrix('239.00');
         $produit15->setStock(5);
-        $produit15->setLibelleProduit('The Banana');
-        $produit15->setDescriptionProduit('Ce type de couteau se récolte sur certains bananiers.');
+        $produit15->setLibelle('The Banana');
+        $produit15->setDescription('Ce type de couteau se récolte sur certains bananiers.');
         $produit15->setTaille('15');
-        $produit15->setMateriauxLame($this->getReference('Fibre de banane trésée'));
+        $produit15->setMateriau($this->getReference('Fibre de banane trésée'));
         $produit15->setPoids('50');
         $produit15->setOrigine($this->getReference('France'));
         $produit15->setTauxReduc('0');
@@ -240,10 +240,10 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit16 = new Produit();
         $produit16->setPrix('297.00');
         $produit16->setStock(3);
-        $produit16->setLibelleProduit('Le 4ieme');
-        $produit16->setDescriptionProduit('Ce couteau est le 4ième d\'une ancienne collection extrêmement rare.');
+        $produit16->setLibelle('Le 4ieme');
+        $produit16->setDescription('Ce couteau est le 4ième d\'une ancienne collection extrêmement rare.');
         $produit16->setTaille('45');
-        $produit16->setMateriauxLame($this->getReference('Ancienne pierre runique'));
+        $produit16->setMateriau($this->getReference('Ancienne pierre runique'));
         $produit16->setPoids('Lourd');
         $produit16->setOrigine($this->getReference('France'));
         $produit16->setTauxReduc('0');
@@ -255,10 +255,10 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit17 = new Produit();
         $produit17->setPrix('789.00');
         $produit17->setStock(48);
-        $produit17->setLibelleProduit('Enormus');
-        $produit17->setDescriptionProduit('Ce couteau est d\'une beauté et d\'une finition incroyablement extraordinaire !');
+        $produit17->setLibelle('Enormus');
+        $produit17->setDescription('Ce couteau est d\'une beauté et d\'une finition incroyablement extraordinaire !');
         $produit17->setTaille('22');
-        $produit17->setMateriauxLame($this->getReference('Fibre de diamant noir'));
+        $produit17->setMateriau($this->getReference('Fibre de diamant noir'));
         $produit17->setPoids('46');
         $produit17->setOrigine($this->getReference('France'));
         $produit17->setTauxReduc('0');
@@ -270,10 +270,10 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit18 = new Produit();
         $produit18->setPrix('146.00');
         $produit18->setStock(2);
-        $produit18->setLibelleProduit('Krimson Web');
-        $produit18->setDescriptionProduit('Parfait pour passer le temps.');
+        $produit18->setLibelle('Krimson Web');
+        $produit18->setDescription('Parfait pour passer le temps.');
         $produit18->setTaille('14');
-        $produit18->setMateriauxLame($this->getReference('Toile rouge'));
+        $produit18->setMateriau($this->getReference('Toile rouge'));
         $produit18->setPoids('41');
         $produit18->setOrigine($this->getReference('Italie'));
         $produit18->setTauxReduc('0');
@@ -285,10 +285,10 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
         $produit19 = new Produit();
         $produit19->setPrix('146.00');
         $produit19->setStock(2);
-        $produit19->setLibelleProduit('Faded Red');
-        $produit19->setDescriptionProduit('Un Magnifique Karambit faded de couleur vives.');
+        $produit19->setLibelle('Faded Red');
+        $produit19->setDescription('Un Magnifique Karambit faded de couleur vives.');
         $produit19->setTaille('14');
-        $produit19->setMateriauxLame($this->getReference('Fibre de verre'));
+        $produit19->setMateriau($this->getReference('Fibre de verre'));
         $produit19->setPoids('49');
         $produit19->setOrigine($this->getReference('Italie'));
         $produit19->setTauxReduc('0');
