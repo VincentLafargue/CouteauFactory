@@ -69,7 +69,7 @@ class ProduitRepository extends \Doctrine\ORM\EntityRepository
             $where .= 'c.id = :categorie';
             $params['categorie'] = $categorie->getId();
         }
-        if ($text != '') {
+        if ($text !== '') {
             if (!empty($where)) {
                 $where .= ' AND ';
             }
