@@ -22,19 +22,13 @@ class  VitrineController extends Controller
         $productRepository = $this->getDoctrine()->getManager()->getRepository('VMSVitrineBundle:Produit');
 
         $form = $this->createForm(FilterProductForm::class);
-        $form->handleRequest($request);
 
         $paramFilters = [];
         $paramFilters['min_price'] = $request->get('min_price');
         $paramFilters['max_price'] = $request->get('max_price');
-        $paramFilters['category'] = $request->get('category');
+        $paramFilters['category']  = $request->get('category');
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $data = $form->getData();
-            // on recupere les produits recherchés avec la methode findfilters
-            $listProduits = $productRepository->findFilters($data['category'], $data['min_price'], $data['max_price']);
-            $paramFilters = $data;
-        } elseif (!empty(array_filter($paramFilters))){
+        if (!empty(array_filter($paramFilters))) {
             $listProduits = $productRepository->findFilters(
                 $paramFilters['category'],
                 $paramFilters['min_price'],
@@ -49,7 +43,7 @@ class  VitrineController extends Controller
          * 8 objets par page
          */
         $paginator = $this->get('knp_paginator');
-        $result = $paginator->paginate(
+        $result    = $paginator->paginate(
             $listProduits,
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 8)
@@ -57,15 +51,27 @@ class  VitrineController extends Controller
         $result->setCustomParameters($paramFilters);
 
         //si on trouve aucun produit on affiche un message
-        if(empty($listProduits)){
+        if (empty($listProduits)) {
             $this->get('session')->getFlashBag()->add('error', 'Aucun article ne correspond à vos critères');
         }
+
         return $this->render('VMSVitrineBundle:Default:vitrine.html.twig',
             array(
                 //pour la vitrine
                 'listProduits' => $result,
                 'form' => $form->createView()
             ));
+    }
+
+    public function filterAction(Request $request)
+    {
+        $form = $this->createForm(FilterProductForm::class);
+        $form->handleRequest($request);
+        $data = [];
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+        }
+        return $this->redirectToRoute('vms_vitrine', $data);
     }
 
     public function vueAction($id)

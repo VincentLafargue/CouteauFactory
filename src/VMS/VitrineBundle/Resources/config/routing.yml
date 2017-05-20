@@ -8,6 +8,11 @@ vms_vitrine:
     defaults:
         _controller:    VMSVitrineBundle:Vitrine:index
 
+vms_vitrine_filter:
+    path: /filter
+    defaults:
+        _controller:    VMSVitrineBundle:Vitrine:filter
+
 vms_vitrine_vue:
     path:    /product/{id}
     defaults:
