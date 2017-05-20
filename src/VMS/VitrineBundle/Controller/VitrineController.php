@@ -23,12 +23,13 @@ class  VitrineController extends Controller
 
         $form = $this->createForm(FilterProductForm::class);
 
+        //on récupère les paramètres envoyés du formulaire de filtres
         $paramFilters = [];
         $paramFilters['min_price'] = $request->get('min_price');
         $paramFilters['max_price'] = $request->get('max_price');
         $paramFilters['category']  = $request->get('category');
 
-        if (!empty(array_filter($paramFilters))) {
+            //array_filter vide les case "vide" du tableau avant de les envoyer a empty
             $listProduits = $productRepository->findFilters(
                 $paramFilters['category'],
                 $paramFilters['min_price'],
