@@ -70,7 +70,7 @@ class ProduitRepository extends \Doctrine\ORM\EntityRepository
             $params['categorie'] = $categorie->getId();
         }
         if ($text != '') {
-            $where .= 'p.libelle LIKE :tex';
+            $where .= 'p.libelle LIKE :text';
             $params['text'] = '%'.$text.'%';
         }
         if (!empty($where)) {
