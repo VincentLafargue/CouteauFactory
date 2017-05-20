@@ -35,6 +35,7 @@ class  VitrineController extends Controller
                 $paramFilters['min_price'],
                 $paramFilters['max_price']
             );
+        if (!empty(array_filter($paramFilters))) {
         } else {
             $listProduits = $productRepository->findAll();
         }
