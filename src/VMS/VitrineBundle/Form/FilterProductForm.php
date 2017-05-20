@@ -32,9 +32,8 @@ class FilterProductForm extends AbstractType
                 'multiple' => false,
                 'required' => false,
                 'choices'  => $this->categorieRepository->findAll(),
-                'choice_label' => function (/** @var $categorie Categorie */ $categorie) {
-                    return $categorie->getLibelle();
-                },
+                'choice_label' => 'getLibelle',
+                'choice_value' => 'getId',
                 'attr' => ['class' => 'form-control']
             ])
             ->add('min_price', NumberType::class, [

@@ -11,6 +11,7 @@ namespace VMS\VitrineBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use VMS\VitrineBundle\Form\FilterProductForm;
+use VMS\VitrineBundle\Repository\CategorieRepository;
 use VMS\VitrineBundle\Repository\ProduitRepository;
 use Symfony\Component\HttpFoundation\Session\Session;
 
@@ -29,8 +30,10 @@ class  VitrineController extends Controller
         $paramFilters['category']  = $request->get('category');
 
         if (!empty(array_filter($paramFilters))) {
+            /** @var CategorieRepository $categoryRepository */
+            $categoryRepository = $this->getDoctrine()->getManager()->getRepository('VMSVitrineBundle:Categorie');
             $listProduits = $productRepository->findFilters(
-                $paramFilters['category'],
+                $categoryRepository->findOneBy(['id' => $paramFilters['category']]),
                 $paramFilters['min_price'],
                 $paramFilters['max_price']
             );
@@ -70,6 +73,7 @@ class  VitrineController extends Controller
         $data = [];
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
+            $data['category'] = $data['category']->getId();
         }
         return $this->redirectToRoute('vms_vitrine', $data);
     }
