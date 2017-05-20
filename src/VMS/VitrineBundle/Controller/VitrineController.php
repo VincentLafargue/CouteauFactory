@@ -76,6 +76,7 @@ class  VitrineController extends Controller
         $data = [];
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
+            $data['category'] = $data['category']->getId();
         }
         return $this->redirectToRoute('vms_vitrine', $data);
     }
