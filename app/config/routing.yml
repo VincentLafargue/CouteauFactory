@@ -16,3 +16,15 @@ users:
 categories:
     type:     rest
     resource: VMS\VitrineBundle\Controller\API\CategorieController
+
+materiaux:
+    type:     rest
+    resource: VMS\VitrineBundle\Controller\API\MateriauController
+
+marques:
+    type:     rest
+    resource: VMS\VitrineBundle\Controller\API\MarqueController
+
+origines:
+    type:     rest
+    resource: VMS\VitrineBundle\Controller\API\OrigineController

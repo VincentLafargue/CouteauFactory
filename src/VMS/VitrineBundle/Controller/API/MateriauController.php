@@ -26,7 +26,7 @@ class MateriauController extends Controller
                 'libelle' => $materiau->getLibelle()
             ];
 
-        if (empty($categories)) {
+        if (empty($materiaux)) {
             return new JsonResponse(['message' => 'Materiaux non trouvés'], Response::HTTP_NOT_FOUND);
         }
 
