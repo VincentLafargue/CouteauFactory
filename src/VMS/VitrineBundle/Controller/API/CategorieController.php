@@ -58,7 +58,7 @@ class CategorieController extends Controller
     /**
      * @Rest\Delete("/api/categories/{id}")
      */
-    public function deleteAction($id)
+    public function deleteCategoriesAction($id)
     {
         $sn = $this->getDoctrine()->getManager();
         $categorie = $this->getDoctrine()->getRepository('VMSVitrineBundle:Categorie')->find($id);
@@ -75,7 +75,7 @@ class CategorieController extends Controller
     /**
      * @Rest\Post("/api/categories/")
      */
-    public function postAction(Request $request)
+    public function postCategorieAction(Request $request)
     {
         $data = new Categorie();
         $libelle = $request->get('libelle');
@@ -90,7 +90,7 @@ class CategorieController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->persist($data);
         $em->flush();
-        return new JsonResponse("Categorie Added Successfully", Response::HTTP_OK);
+        return new JsonResponse("Categorie ajoutée", Response::HTTP_OK);
     }
 
     /**

@@ -49,7 +49,7 @@ class Materiau
      *
      * @param string $libelle
      *
-     * @return Origine
+     * @return Materiau
      */
     public function setLibelle($libelle)
     {
@@ -57,14 +57,5 @@ class Materiau
 
         return $this;
     }
-
-    /**
-     * Get libelle
-     *
-     * @return string
-     */
-    public function getLibelle()
-    {
-        return $this->libelle;
-    }
+  
 }
