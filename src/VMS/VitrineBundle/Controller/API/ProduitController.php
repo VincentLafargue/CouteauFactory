@@ -2,7 +2,6 @@
 
 namespace VMS\VitrineBundle\Controller\API;
 
-use FOS\RestBundle\View\View;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,23 +22,23 @@ class ProduitController extends Controller
 
         foreach ($products as $product)
             $formatted[] = [
-                'id' => $product->getId(),
-                'img' => $product->getImagePath(),
-                'libelle' => $product->getlibelleProduit(),
-                'description' => $product -> getDescriptionProduit(),
-                'categorie' => $product->getCategorie(),
-                'prix' => $product->getPrix(),
-                'taux' => $product->getTauxReduc(),
-                'origine' => $product -> getOrigine(),
-                'poids' => $product -> getPoids(),
-                'materiaux' =>$product -> getMateriauxLame(),
-                'taille' => $product -> getTaille(),
-                'stock' => $product -> getStock(),
+                'id'          => $product->getId(),
+                'img'         => $product->getImagePath(),
+                'libelle'     => $product->getlibelle(),
+                'description' => $product->getDescription(),
+                'categorie'   => $product->getCategorie()->getLibelle(),
+                'prix'        => $product->getPrix(),
+                'taux'        => $product->getTauxReduc(),
+                'origine'     => $product->getOrigine()->getLibelle(),
+                'poids'       => $product->getPoids(),
+                'materiaux'   => $product->getMateriau()->getLibelle(),
+                'taille'      => $product->getTaille(),
+                'stock'       => $product->getStock(),
 
             ];
 
         if (empty($products)) {
-            return new JsonResponse(['message' => 'Place not found'], Response::HTTP_NOT_FOUND);
+            return new JsonResponse(['message' => 'Produits non trouvés'], Response::HTTP_NOT_FOUND);
         }
 
         return new JsonResponse($formatted);
@@ -48,28 +47,28 @@ class ProduitController extends Controller
     /**
      * @Rest\Get("/api/produits/{id}")
     */
-    public function getIdAction($id, Request $request)
+    public function getProduitAction($id, Request $request)
     {
         $product = $this->getDoctrine()->getManager()->getRepository('VMSVitrineBundle:Produit')->find($id);
         $formatted = [];
 
         $formatted[] = [
-            'id' => $product->getId(),
-            'img' => $product->getImagePath(),
-            'libelle' => $product->getlibelleProduit(),
-            'description' => $product -> getDescriptionProduit(),
-            'categorie' => $product->getCategorie(),
-            'prix' => $product->getPrix(),
-            'taux' => $product->getTauxReduc(),
-            'origine' => $product -> getOrigine(),
-            'poids' => $product -> getPoids(),
-            'materiaux' =>$product -> getMateriauxLame(),
-            'taille' => $product -> getTaille(),
-            'stock' => $product -> getStock(),
+            'id'          => $product->getId(),
+            'img'         => $product->getImagePath(),
+            'libelle'     => $product->getlibelle(),
+            'description' => $product->getDescription(),
+            'categorie'   => $product->getCategorie()->getLibelle(),
+            'prix'        => $product->getPrix(),
+            'taux'        => $product->getTauxReduc(),
+            'origine'     => $product->getOrigine()->getLibelle(),
+            'poids'       => $product->getPoids(),
+            'materiaux'   => $product->getMateriau()->getLibelle(),
+            'taille'      => $product->getTaille(),
+            'stock'       => $product->getStock(),
         ];
 
         if (empty($product)) {
-            return new JsonResponse(['message' => 'Place not found'], Response::HTTP_NOT_FOUND);
+            return new JsonResponse(['message' => 'Produit non trouvé'], Response::HTTP_NOT_FOUND);
         }
 
         return new JsonResponse($formatted);
@@ -79,7 +78,7 @@ class ProduitController extends Controller
     /**
      * @Rest\Delete("/api/produits/{id}")
      */
-    public function deleteAction($id)
+    public function deleteProduitAction($id)
     {
         $data = new Produit;
         $sn = $this->getDoctrine()->getManager();
@@ -97,21 +96,21 @@ class ProduitController extends Controller
     /**
      * @Rest\Post("/api/produits")
      */
-    public function postAction(Request $request)
+    public function postProduitsAction(Request $request)
     {
         $data = new Produit;
-        $img = $request->get('image');
-        $prix = $request->get('prix');
-        $stock = $request->get('stock');
-        $categorie = $request->get('categorie');
-        $libelle_produit = $request->get('libelle');
-        $description_produit = $request->get('description');
-        $taille = $request->get('taille');
-        $materiaux = $request->get('materiaux');
-        $poids = $request->get('poids');
-        $origine = $request->get('origine');
-        $reduc  = $request->get('reduc');
-        if(empty($libelle_produit))
+        $img         = $request->get('image');
+        $prix        = $request->get('prix');
+        $stock       = $request->get('stock');
+        $categorie   = $request->get('categorie');
+        $libelle     = $request->get('libelle');
+        $description = $request->get('description');
+        $taille      = $request->get('taille');
+        $materiau    = $request->get('materiaux');
+        $poids       = $request->get('poids');
+        $origine     = $request->get('origine');
+        $reduc       = $request->get('reduc');
+        if(empty($libelle))
         {
             return new JsonResponse("LIBELLE NOT ALLOWED" , Response::HTTP_NOT_ACCEPTABLE);
         }
@@ -119,10 +118,10 @@ class ProduitController extends Controller
         $data->setPrix($prix);
         $data->setStock($stock);
         $data->setCategorie($categorie);
-        $data->setLibelleProduit($libelle_produit);
-        $data->setDescriptionProduit($description_produit);
+        $data->setLibelle($libelle);
+        $data->setDescription($description);
         $data->setTaille($taille);
-        $data->setMateriauxLame($materiaux);
+        $data->setMateriau($materiau);
         $data->setPoids($poids);
         $data->setOrigine($origine);
         $data->setTauxReduc($reduc);
@@ -135,20 +134,20 @@ class ProduitController extends Controller
     /**
      * @Rest\Put("/api/produits/{id}")
      */
-    public function updateAction($id,Request $request)
+    public function updateProduitAction($id,Request $request)
     {
         $data = new Produit;
-        $img = $request->get('image');
-        $prix = $request->get('prix');
-        $stock = $request->get('stock');
-        $categorie = $request->get('categorie');
-        $libelle_produit = $request->get('libelle');
-        $description_produit = $request->get('description');
-        $taille = $request->get('taille');
-        $materiaux = $request->get('materiaux');
-        $poids = $request->get('poids');
-        $origine = $request->get('origine');
-        $reduc  = $request->get('reduc');
+        $img         = $request->get('image');
+        $prix        = $request->get('prix');
+        $stock       = $request->get('stock');
+        $categorie   = $request->get('categorie');
+        $libelle     = $request->get('libelle');
+        $description = $request->get('description');
+        $taille      = $request->get('taille');
+        $materiaux   = $request->get('materiaux');
+        $poids       = $request->get('poids');
+        $origine     = $request->get('origine');
+        $reduc       = $request->get('reduc');
         $sn = $this->getDoctrine()->getManager();
         $produit = $this->getDoctrine()->getRepository('VMSVitrineBundle:Produit')->find($id);
         if (empty($produit)) {
@@ -160,10 +159,10 @@ class ProduitController extends Controller
             $produit->setPrix($prix);
             $produit->setStock($stock);
             $produit->setCategorie($categorie);
-            $produit->setLibelleProduit($libelle_produit);
-            $produit->setDescriptionProduit($description_produit);
+            $produit->setLibelle($libelle);
+            $produit->setDescription($description);
             $produit->setTaille($taille);
-            $produit->setMateriauxLame($materiaux);
+            $produit->setMateriau($materiaux);
             $produit->setPoids($poids);
             $produit->setOrigine($origine);
             $produit->setTauxReduc($reduc);

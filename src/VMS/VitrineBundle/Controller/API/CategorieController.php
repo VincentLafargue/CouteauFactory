@@ -2,7 +2,6 @@
 
 namespace VMS\VitrineBundle\Controller\API;
 
-use FOS\RestBundle\View\View;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,13 +22,13 @@ class CategorieController extends Controller
 
         foreach ($categories as $categorie)
             $formatted[] = [
-                'id' => $categorie->getId(),
-                'libelle' => $categorie->getLibelle(),
+                'id'          => $categorie->getId(),
+                'libelle'     => $categorie->getLibelle(),
                 'description' => $categorie->getDescription(),
             ];
 
         if (empty($categories)) {
-            return new JsonResponse(['message' => 'Categories not found'], Response::HTTP_NOT_FOUND);
+            return new JsonResponse(['message' => 'Catégories non trouvées'], Response::HTTP_NOT_FOUND);
         }
 
         return new JsonResponse($formatted);
@@ -38,19 +37,19 @@ class CategorieController extends Controller
     /**
      * @Rest\Get("/api/categories/{id}")
      */
-    public function getIdAction($id, Request $request)
+    public function getCategorieAction($id, Request $request)
     {
         $categorie = $this->getDoctrine()->getManager()->getRepository('VMSVitrineBundle:Categorie')->find($id);
         $formatted = [];
 
         $formatted[] = [
-            'id' => $categorie->getId(),
-            'libelle' => $categorie->getLibelle(),
+            'id'          => $categorie->getId(),
+            'libelle'     => $categorie->getLibelle(),
             'description' => $categorie->getDescription(),
         ];
 
         if (empty($categorie)) {
-            return new JsonResponse(['message' => 'Categories not found'], Response::HTTP_NOT_FOUND);
+            return new JsonResponse(['message' => 'Catégorie non trouvée'], Response::HTTP_NOT_FOUND);
         }
 
         return new JsonResponse($formatted);
